@@ -3,7 +3,6 @@
 
 #include <check.h>
 
-#include <check.h>
 #include <float.h>
 
 #define setup(av, bv, cv)                              \
