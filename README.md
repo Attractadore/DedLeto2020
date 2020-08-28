@@ -1,40 +1,17 @@
 # About this reposity
 
 This repository contains work done by me during MIPT's 2020 Summer School on Prog - RT and IVT.
+Each directory contains a different program.
 
 # Building
 
-CMake is used as this project's build system. To compile all of the available examples, 
-run the following commands in the cloned repository's root folder:
-
-```
-mkdir build
-cd build
-cmake ..
-cmake --build .
-```
-
-By default, this also builds the various example's unit tests. If you don't want to build the tests
-or don't have [check](https://libcheck.github.io/check) installed, you should replace
-
-```
-cmake ..
-```
-with 
-```
-cmake -DBUILD_TESTING=OFF ..
-```
-
-Now you can browse the various subdirectories and run the examples.
+Run the build script in a directory to get an executable.
+GCC with C99 support is required for this. 
 
 # Running the tests
 
-CTest is used to run the tests. After building the project, navigate to an example's subdirectory
-and run
-
-```
-ctest .
-```
+Along with a build script each directory also contains a test script. Run this script 
+to test it's program. Note that you must have [check](https://libcheck.github.io/check) installed for this.
 
 # Documentation
 

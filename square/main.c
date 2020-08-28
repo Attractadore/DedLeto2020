@@ -27,7 +27,7 @@ int main() {
         if (stat == 3) {
             break;
         }
-        printf("Sorry, I don't understand :(. Please enter a b c as numbers or press Ctrl+D to exit:\n");
+        printf("Sorry, I did't understand you. Please enter a b c as numbers or press Ctrl+D to exit:\n");
     }
     if (!check_str) {
         // Got EOF
