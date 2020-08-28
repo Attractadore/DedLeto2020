@@ -29,7 +29,7 @@ int main()
         printf("Sorry, did not get that, try again:\n");
     }
     if (!check_str) {
-        /* Got EOF */
+        // Got EOF
         return NO_ERROR;
     }
 
