@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 
+#define INPUT_BUFFER_SIZE 4096
+
 #define NO_ERROR 0
 #define SOLUTION_ERROR 1
 #define INPUT_ERROR 2
@@ -17,10 +19,18 @@ int main()
     printf("I solve ax^2 + bx + c = 0\n");
     printf("Enter a b c:\n");
 
-    int stat = scanf("%lg %lg %lg", &a, &b, &c);
-    if (stat != 3) {
-        printf("Sorry, did not get that\n");
-        return INPUT_ERROR;
+    char input_str[INPUT_BUFFER_SIZE];
+    char* check_str;
+    while ((check_str = fgets(input_str, INPUT_BUFFER_SIZE, stdin))) {
+        int stat = sscanf(input_str, "%lg %lg %lg", &a, &b, &c);
+        if (stat == 3) {
+            break;
+        }
+        printf("Sorry, did not get that, try again:\n");
+    }
+    if (!check_str) {
+        /* Got EOF */
+        return NO_ERROR;
     }
 
     int numSolutions = solveQuadratic(a, b, c, &x1, &x2);
