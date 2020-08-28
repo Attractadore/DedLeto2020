@@ -3,6 +3,7 @@
 
 #include <check.h>
 
+#include <stdlib.h>
 #include <float.h>
 
 #define setup(av, bv, cv)                              \
@@ -273,8 +274,13 @@ int main()
 {
     Suite* s = test_solve_quadratic_suite();
     SRunner* sr = srunner_create(s);
+
     srunner_run_all(sr, CK_NORMAL);
+    int num_failed = srunner_ntests_failed(sr);
     srunner_free(sr);
 
-    return 0;
+    if (num_failed) {
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
 }

@@ -3,6 +3,7 @@
 #include <check.h>
 
 #include <math.h>
+#include <stdlib.h>
 
 START_TEST(test_is_equal_nan_nan)
 {
@@ -101,7 +102,11 @@ int main()
     SRunner* sr = srunner_create(s);
 
     srunner_run_all(sr, CK_NORMAL);
+    int num_failed = srunner_ntests_failed(sr);
     srunner_free(sr);
 
-    return 0;
+    if (num_failed) {
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
 }
