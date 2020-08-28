@@ -4,7 +4,7 @@
  */
 
 #define EQ_INFINITE_SOLUTIONS 3 /**< Symbolic parameter indicating that an infinite number of solutions was found */
-#define EQ_ERROR_SOLUTIONS -1 /**< Symbolic parameter indicating that an error occured while trying to find a solution */
+#define EQ_ERROR_SOLUTIONS -1   /**< Symbolic parameter indicating that an error occured while trying to find a solution */
 
 /**
  * \brief Solves a quadratic equation

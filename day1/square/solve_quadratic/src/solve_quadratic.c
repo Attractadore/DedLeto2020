@@ -4,8 +4,7 @@
 #include <assert.h>
 #include <math.h>
 
-int solveQuadratic(double a, double b, double c, double* x1p, double* x2p)
-{
+int solveQuadratic(double a, double b, double c, double* x1p, double* x2p) {
     assert(x1p);
     assert(x2p);
     assert(x1p != x2p);
