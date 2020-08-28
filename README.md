@@ -38,7 +38,7 @@ ctest .
 
 # Documentation
 
-This project's documentation is located in the docs/ folder. It can also be accessed [here](https://attractadore.github.io/DedLeto2020).
+This project's documentation is located in the docs folder. It can also be accessed [here](https://attractadore.github.io/DedLeto2020).
 If you want to generate the docmentation yourself, you will need [doxygen](https://www.doxygen.nl). Once you have doxygen, you
 should run the following in the repository's root directory:
 
@@ -46,5 +46,5 @@ should run the following in the repository's root directory:
 doxygen Doxyfile
 ```
 
-The generated documentation can than be found in the docs/ folder.
+The generated documentation can than be found in the docs folder.
 
