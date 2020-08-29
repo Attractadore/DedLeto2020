@@ -5,13 +5,13 @@ Each directory contains a different program.
 
 # Building
 
-Run the build script in a directory to get an executable.
-GCC with C99 support is required for this. 
+The build directory contains scripts to build every program.
+GCC with C99 support is required. 
 
 # Running the tests
 
-Along with a build script each directory also contains a test script. Run this script 
-to test it's program. Note that you must have [check](https://libcheck.github.io/check) installed for this.
+Along with build scripts the build directory also contains test scripts. Run these scripts 
+to test their programs. Note that you must have [check](https://libcheck.github.io/check) installed for this.
 
 # Documentation
 
@@ -23,5 +23,5 @@ should run the following in the repository's root directory:
 doxygen Doxyfile
 ```
 
-The generated documentation can than be found in the docs folder.
+The generated documentation can now be found in the docs folder.
 

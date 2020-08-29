@@ -40,27 +40,18 @@
 <div class="title">About this reposity </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This repository contains work done by me during MIPT's 2020 Summer School on Prog - RT and IVT.</p>
+<div class="textblock"><p>This repository contains work done by me during MIPT's 2020 Summer School on Prog - RT and IVT. Each directory contains a different program.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Building</h1>
-<p>CMake is used as this project's build system. To compile all of the available examples, run the following commands in the cloned repository's root folder:</p>
-<div class="fragment"><div class="line">mkdir build</div>
-<div class="line">cd build</div>
-<div class="line">cmake ..</div>
-<div class="line">cmake --build .</div>
-</div><!-- fragment --><p>By default, this also builds the various example's unit tests. If you don't want to build the tests or don't have <a href="https://libcheck.github.io/check">check</a> installed, you should replace</p>
-<div class="fragment"><div class="line">cmake ..</div>
-</div><!-- fragment --><p>with </p><div class="fragment"><div class="line">cmake -DBUILD_TESTING=OFF ..</div>
-</div><!-- fragment --><p>Now you can browse the various subdirectories and run the examples.</p>
+<p>The build directory contains scripts to build every program. GCC with C99 support is required.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Running the tests</h1>
-<p>CTest is used to run the tests. After building the project, navigate to an example's subdirectory and run</p>
-<div class="fragment"><div class="line">ctest .</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+<p>Along with build scripts the build directory also contains test scripts. Run these scripts to test their programs. Note that you must have <a href="https://libcheck.github.io/check">check</a> installed for this.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Documentation</h1>
 <p>This project's documentation is located in the docs folder. It can also be accessed <a href="https://attractadore.github.io/DedLeto2020">here</a>. If you want to generate the docmentation yourself, you will need <a href="https://www.doxygen.nl">doxygen</a>. Once you have doxygen, you should run the following in the repository's root directory:</p>
 <div class="fragment"><div class="line">doxygen Doxyfile</div>
-</div><!-- fragment --><p>The generated documentation can than be found in the docs folder. </p>
+</div><!-- fragment --><p>The generated documentation can now be found in the docs folder. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

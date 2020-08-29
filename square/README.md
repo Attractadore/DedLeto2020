@@ -1,3 +1,3 @@
-# About this program
+# About square
 
 This program solves quadratic equations.
