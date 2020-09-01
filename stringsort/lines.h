@@ -4,25 +4,44 @@
 #pragma once
 #include <stdio.h>
 
-/**
- * \brief This function frees an array of strings
- *
- * \param[out] lines The string array that this function will operate on
- * \param[in] num_lines The length of the string array
- *
- * \remark This function frees both the string array and every string that it contains
- */
-void free_lines(char** lines, size_t num_lines);
+struct _lines_s {
+    char const** lines;
+    size_t num_lines;
+    char* _string_buffer;
+    size_t _string_buffer_size;
+};
+
+typedef struct _lines_s LINES;
 
 /**
- * \brief This function reads lines and stores them in an array
+ * \brief This function reads lines and stores
  *
  * \param[in] input_stream The stream from which the lines will be read
- * \param[out] lines_p Pointer to array of strings where the lines will be stored
  *
- * \return The number of lines read
+ * \return A #LINES structure describing the read lines
  *
- * \remark You must free the array of lines that this function returns manually or by calling #free_lines.
+ * \remark You can free the returned structure by calling #free_lines.
  *         This function reads lines until it encouters EOF
  */
-size_t read_lines(FILE* input_stream, char*** lines_p);
+LINES* read_lines(FILE* input_stream);
+
+/**
+ * \brief This functions writes the contents of a #LINES structure to a file
+ *
+ * \param[in] lines The #LINES structure whose contents that this function will write
+ */
+void write_lines(const LINES* lines, FILE* file);
+
+/**
+ * \brief This function sorts the contents of a #LINES structure;
+ *
+ * \param[in, out] lines The #LINES structure whose contents will be sorted by this function
+ */
+void sort_lines(LINES* lines);
+
+/**
+ * \brief This function free the #LINES structure returned by #read_lines
+ *
+ * \param[out] lines The #LINES structure that this function will operate on
+ */
+void free_lines(LINES* lines);
