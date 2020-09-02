@@ -5,8 +5,8 @@
 #include <stdio.h>
 
 struct _lines_s {
-    char const** lines;
-    size_t num_lines;
+    char** _lines;
+    size_t _num_lines;
     char* _string_buffer;
     size_t _string_buffer_size;
 };
@@ -24,6 +24,13 @@ typedef struct _lines_s LINES;
  *         This function reads lines until it encouters EOF
  */
 LINES* read_lines(FILE* input_stream);
+
+/**
+ * \brief This function reverses the contents of a #LINES structure without changing their order
+ *
+ * \param[i] lines The #LINES structure whose contents this this function will operate on
+ */
+void reverse_lines(LINES* lines);
 
 /**
  * \brief This functions writes the contents of a #LINES structure to a file

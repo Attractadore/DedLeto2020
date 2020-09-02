@@ -1,4 +1,5 @@
 #include "lines.h"
+#include "string_helper.h"
 
 #include <assert.h>
 #include <ctype.h>
@@ -13,7 +14,7 @@ LINES* read_lines(FILE* input_file) {
 
     size_t num_read_lines = 0,
            lines_buffer_size = DEFAULT_NUM_LINES;
-    char const** lines = malloc(sizeof(char const*) * lines_buffer_size);
+    char** lines = malloc(sizeof(char const*) * lines_buffer_size);
 
     size_t string_buffer_size = 0;
     char* string_buffer = NULL;
@@ -60,74 +61,41 @@ LINES* read_lines(FILE* input_file) {
     }
 
     LINES* lines_s = malloc(sizeof(LINES));
-    lines_s->lines = lines;
-    lines_s->num_lines = num_read_lines;
+    lines_s->_lines = lines;
+    lines_s->_num_lines = num_read_lines;
     lines_s->_string_buffer = string_buffer;
     lines_s->_string_buffer_size = string_buffer_size;
     return lines_s;
+}
+
+void reverse_lines(LINES* lines) {
+    for (size_t i = 0; i < lines->_num_lines; i++) {
+        string_reverse(lines->_lines[i]);
+    }
 }
 
 void write_lines(const LINES* lines, FILE* file) {
     assert(lines);
     assert(file);
 
-    for (size_t i = 0; i < lines->num_lines; i++) {
-        fprintf(file, "%s\n", lines->lines[i]);
+    for (size_t i = 0; i < lines->_num_lines; i++) {
+        fprintf(file, "%s\n", lines->_lines[i]);
     }
 };
-
-int is_good(char c) {
-    return !(iscntrl(c) || isspace(c) || ispunct(c));
-}
-
-size_t find_alnum(const char* s, size_t i) {
-    while (!(s[i] == '\0' || is_good(s[i]))) {
-        i++;
-    }
-    return i;
-}
-
-int cmp(void const* left_value_p, void const* right_value_p) {
-    assert(left_value_p);
-    assert(right_value_p);
-
-    char const* left_string = *((char const* const*) left_value_p);
-    char const* right_string = *((char const* const*) right_value_p);
-
-    size_t li = find_alnum(left_string, 0),
-           ri = find_alnum(right_string, 0);
-    while (left_string[li] != '\0' &&
-           right_string[ri] != '\0') {
-        if (left_string[li] == right_string[ri]) {
-            li = find_alnum(left_string, li + 1);
-            ri = find_alnum(right_string, ri + 1);
-            continue;
-        }
-        return (left_string[li] < right_string[ri]) ? -1 : 1;
-    }
-
-    if (left_string[li] == '\0' && right_string[ri] != '\0') {
-        return 1;
-    }
-    if (left_string[li] != '\0' && right_string[ri] == '\0') {
-        return -1;
-    }
-    return 0;
-}
 
 void sort_lines(LINES* lines) {
     assert(lines);
 
-    qsort(lines->lines, lines->num_lines, sizeof(char*), &cmp);
+    qsort(lines->_lines, lines->_num_lines, sizeof(char*), &cmp_str);
 }
 
 void free_lines(LINES* lines) {
     assert(lines);
 
-    free(lines->lines);
+    free(lines->_lines);
     free(lines->_string_buffer);
-    lines->lines = NULL;
-    lines->num_lines = 0;
+    lines->_lines = NULL;
+    lines->_num_lines = 0;
     lines->_string_buffer = NULL;
     lines->_string_buffer_size = 0;
 }

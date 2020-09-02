@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -v stringsort
+rm -v encyclopedia_sort rhyme_sort
