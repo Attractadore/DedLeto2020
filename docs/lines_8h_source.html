@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
@@ -50,16 +51,35 @@
 <div class="title">lines.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="lines_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<a href="lines_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">    1</a></span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lines_8h.html#a9323da426838711b078e6f709e7f1444">free_lines</a>(<span class="keywordtype">char</span>** lines, <span class="keywordtype">size_t</span> num_lines);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="lines_8h.html#ac204c59799bcb3dec43f22271a24aa83">read_lines</a>(FILE* input_stream, <span class="keywordtype">char</span>*** lines_p);</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="struct__lines__s.html">    7</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct__lines__s.html">_lines_s</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">char</span>** _lines;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">size_t</span> _num_lines;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">char</span>* _string_buffer;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">size_t</span> _string_buffer_size;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;};</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__lines__s.html">_lines_s</a> <a class="code" href="struct__lines__s.html">LINES</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<a class="code" href="struct__lines__s.html">LINES</a>* <a class="code" href="lines_8h.html#a5348a4a8d27f98a029fdb126fccdf507">read_lines</a>(FILE* input_file);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lines_8h.html#aee530bcd5ebf5ffce6c289c2671370b3">reverse_lines</a>(<a class="code" href="struct__lines__s.html">LINES</a>* lines);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lines_8h.html#aca8ccb56b1de59beb2f969a6238b8729">write_lines</a>(<span class="keyword">const</span> <a class="code" href="struct__lines__s.html">LINES</a>* lines, FILE* file);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lines_8h.html#ae1c97a3aea208dd234ee5a5ca08794c0">sort_lines</a>(<a class="code" href="struct__lines__s.html">LINES</a>* lines);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lines_8h.html#aadd3b27ebca0064e0cfd0e51bfd4e0ca">free_lines</a>(<a class="code" href="struct__lines__s.html">LINES</a>* lines);</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="alines_8h_html_a9323da426838711b078e6f709e7f1444"><div class="ttname"><a href="lines_8h.html#a9323da426838711b078e6f709e7f1444">free_lines</a></div><div class="ttdeci">void free_lines(char **lines, size_t num_lines)</div><div class="ttdoc">This function frees an array of strings.</div><div class="ttdef"><b>Definition:</b> lines.c:9</div></div>
-<div class="ttc" id="alines_8h_html_ac204c59799bcb3dec43f22271a24aa83"><div class="ttname"><a href="lines_8h.html#ac204c59799bcb3dec43f22271a24aa83">read_lines</a></div><div class="ttdeci">size_t read_lines(FILE *input_stream, char ***lines_p)</div><div class="ttdoc">This function reads lines and stores them in an array.</div><div class="ttdef"><b>Definition:</b> lines.c:18</div></div>
+<div class="ttc" id="alines_8h_html_a5348a4a8d27f98a029fdb126fccdf507"><div class="ttname"><a href="lines_8h.html#a5348a4a8d27f98a029fdb126fccdf507">read_lines</a></div><div class="ttdeci">LINES * read_lines(FILE *input_file)</div><div class="ttdoc">This function reads lines and stores them in a LINES structure.</div><div class="ttdef"><b>Definition:</b> lines.c:12</div></div>
+<div class="ttc" id="alines_8h_html_ae1c97a3aea208dd234ee5a5ca08794c0"><div class="ttname"><a href="lines_8h.html#ae1c97a3aea208dd234ee5a5ca08794c0">sort_lines</a></div><div class="ttdeci">void sort_lines(LINES *lines)</div><div class="ttdoc">This function sorts the contents of a LINES structure.</div><div class="ttdef"><b>Definition:</b> lines.c:86</div></div>
+<div class="ttc" id="alines_8h_html_aadd3b27ebca0064e0cfd0e51bfd4e0ca"><div class="ttname"><a href="lines_8h.html#aadd3b27ebca0064e0cfd0e51bfd4e0ca">free_lines</a></div><div class="ttdeci">void free_lines(LINES *lines)</div><div class="ttdoc">This function frees the LINES structure returned by read_lines.</div><div class="ttdef"><b>Definition:</b> lines.c:92</div></div>
+<div class="ttc" id="astruct__lines__s_html"><div class="ttname"><a href="struct__lines__s.html">_lines_s</a></div><div class="ttdef"><b>Definition:</b> lines.h:7</div></div>
+<div class="ttc" id="alines_8h_html_aca8ccb56b1de59beb2f969a6238b8729"><div class="ttname"><a href="lines_8h.html#aca8ccb56b1de59beb2f969a6238b8729">write_lines</a></div><div class="ttdeci">void write_lines(const LINES *lines, FILE *file)</div><div class="ttdoc">This functions writes the contents of a LINES structure to a file.</div><div class="ttdef"><b>Definition:</b> lines.c:77</div></div>
+<div class="ttc" id="alines_8h_html_aee530bcd5ebf5ffce6c289c2671370b3"><div class="ttname"><a href="lines_8h.html#aee530bcd5ebf5ffce6c289c2671370b3">reverse_lines</a></div><div class="ttdeci">void reverse_lines(LINES *lines)</div><div class="ttdoc">This function reverses the contents of a LINES structure without changing their order.</div><div class="ttdef"><b>Definition:</b> lines.c:71</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

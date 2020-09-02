@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
@@ -47,6 +48,8 @@
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">lines.h File Reference</div>  </div>
@@ -56,20 +59,55 @@
 </div>
 <p><a href="lines_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__lines__s.html">_lines_s</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a6d8e401e3f2f048ba9163c8c83d238c7"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__lines__s.html">_lines_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a></td></tr>
+<tr class="separator:a6d8e401e3f2f048ba9163c8c83d238c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9323da426838711b078e6f709e7f1444"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#a9323da426838711b078e6f709e7f1444">free_lines</a> (char **lines, size_t num_lines)</td></tr>
-<tr class="memdesc:a9323da426838711b078e6f709e7f1444"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function frees an array of strings.  <a href="lines_8h.html#a9323da426838711b078e6f709e7f1444">More...</a><br /></td></tr>
-<tr class="separator:a9323da426838711b078e6f709e7f1444"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac204c59799bcb3dec43f22271a24aa83"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#ac204c59799bcb3dec43f22271a24aa83">read_lines</a> (FILE *input_stream, char ***lines_p)</td></tr>
-<tr class="memdesc:ac204c59799bcb3dec43f22271a24aa83"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reads lines and stores them in an array.  <a href="lines_8h.html#ac204c59799bcb3dec43f22271a24aa83">More...</a><br /></td></tr>
-<tr class="separator:ac204c59799bcb3dec43f22271a24aa83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5348a4a8d27f98a029fdb126fccdf507"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#a5348a4a8d27f98a029fdb126fccdf507">read_lines</a> (FILE *input_file)</td></tr>
+<tr class="memdesc:a5348a4a8d27f98a029fdb126fccdf507"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reads lines and stores them in a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure.  <a href="lines_8h.html#a5348a4a8d27f98a029fdb126fccdf507">More...</a><br /></td></tr>
+<tr class="separator:a5348a4a8d27f98a029fdb126fccdf507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee530bcd5ebf5ffce6c289c2671370b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#aee530bcd5ebf5ffce6c289c2671370b3">reverse_lines</a> (<a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *lines)</td></tr>
+<tr class="memdesc:aee530bcd5ebf5ffce6c289c2671370b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reverses the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure without changing their order.  <a href="lines_8h.html#aee530bcd5ebf5ffce6c289c2671370b3">More...</a><br /></td></tr>
+<tr class="separator:aee530bcd5ebf5ffce6c289c2671370b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca8ccb56b1de59beb2f969a6238b8729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#aca8ccb56b1de59beb2f969a6238b8729">write_lines</a> (const <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *lines, FILE *file)</td></tr>
+<tr class="memdesc:aca8ccb56b1de59beb2f969a6238b8729"><td class="mdescLeft">&#160;</td><td class="mdescRight">This functions writes the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure to a file.  <a href="lines_8h.html#aca8ccb56b1de59beb2f969a6238b8729">More...</a><br /></td></tr>
+<tr class="separator:aca8ccb56b1de59beb2f969a6238b8729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1c97a3aea208dd234ee5a5ca08794c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#ae1c97a3aea208dd234ee5a5ca08794c0">sort_lines</a> (<a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *lines)</td></tr>
+<tr class="memdesc:ae1c97a3aea208dd234ee5a5ca08794c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function sorts the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure.  <a href="lines_8h.html#ae1c97a3aea208dd234ee5a5ca08794c0">More...</a><br /></td></tr>
+<tr class="separator:ae1c97a3aea208dd234ee5a5ca08794c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadd3b27ebca0064e0cfd0e51bfd4e0ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#aadd3b27ebca0064e0cfd0e51bfd4e0ca">free_lines</a> (<a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *lines)</td></tr>
+<tr class="memdesc:aadd3b27ebca0064e0cfd0e51bfd4e0ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function frees the <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure returned by <a class="el" href="lines_8h.html#a5348a4a8d27f98a029fdb126fccdf507" title="This function reads lines and stores them in a LINES structure.">read_lines</a>.  <a href="lines_8h.html#aadd3b27ebca0064e0cfd0e51bfd4e0ca">More...</a><br /></td></tr>
+<tr class="separator:aadd3b27ebca0064e0cfd0e51bfd4e0ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file defines functions for working with arrays of strings </p>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a9323da426838711b078e6f709e7f1444"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9323da426838711b078e6f709e7f1444">&#9670;&nbsp;</a></span>free_lines()</h2>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="a6d8e401e3f2f048ba9163c8c83d238c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d8e401e3f2f048ba9163c8c83d238c7">&#9670;&nbsp;</a></span>LINES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__lines__s.html">_lines_s</a> <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This structure represents strings that have been stored in a buffer. Do not modify it directly </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="aadd3b27ebca0064e0cfd0e51bfd4e0ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadd3b27ebca0064e0cfd0e51bfd4e0ca">&#9670;&nbsp;</a></span>free_lines()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -77,52 +115,120 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void free_lines </td>
           <td>(</td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>lines</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *&#160;</td>
+          <td class="paramname"><em>lines</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>num_lines</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function frees an array of strings. </p>
+<p>This function frees the <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure returned by <a class="el" href="lines_8h.html#a5348a4a8d27f98a029fdb126fccdf507" title="This function reads lines and stores them in a LINES structure.">read_lines</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">lines</td><td>The string array that this function will operate on </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">num_lines</td><td>The length of the string array</td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lines</td><td>The <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure that this function will operate on </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This function frees both the string array and every string that it contains </dd></dl>
 
 </div>
 </div>
-<a id="ac204c59799bcb3dec43f22271a24aa83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac204c59799bcb3dec43f22271a24aa83">&#9670;&nbsp;</a></span>read_lines()</h2>
+<a id="a5348a4a8d27f98a029fdb126fccdf507"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5348a4a8d27f98a029fdb126fccdf507">&#9670;&nbsp;</a></span>read_lines()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t read_lines </td>
+          <td class="memname"><a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a>* read_lines </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>input_stream</em>, </td>
+          <td class="paramname"><em>input_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function reads lines and stores them in a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">input_file</td><td>The file from which the lines will be read</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure describing the read lines</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>You can free the returned structure by calling <a class="el" href="lines_8h.html#aadd3b27ebca0064e0cfd0e51bfd4e0ca" title="This function frees the LINES structure returned by read_lines.">free_lines</a>. This function reads lines until it encouters EOF </dd></dl>
+
+</div>
+</div>
+<a id="aee530bcd5ebf5ffce6c289c2671370b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee530bcd5ebf5ffce6c289c2671370b3">&#9670;&nbsp;</a></span>reverse_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reverse_lines </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *&#160;</td>
+          <td class="paramname"><em>lines</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function reverses the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure without changing their order. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lines</td><td>The <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure whose contents this this function will operate on </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae1c97a3aea208dd234ee5a5ca08794c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1c97a3aea208dd234ee5a5ca08794c0">&#9670;&nbsp;</a></span>sort_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sort_lines </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *&#160;</td>
+          <td class="paramname"><em>lines</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function sorts the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">lines</td><td>The <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure whose contents will be sorted by this function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aca8ccb56b1de59beb2f969a6238b8729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca8ccb56b1de59beb2f969a6238b8729">&#9670;&nbsp;</a></span>write_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void write_lines </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *&#160;</td>
+          <td class="paramname"><em>lines</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char ***&#160;</td>
-          <td class="paramname"><em>lines_p</em>&#160;</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -132,16 +238,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function reads lines and stores them in an array. </p>
+<p>This functions writes the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure to a file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">input_stream</td><td>The stream from which the lines will be read </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">lines_p</td><td>Pointer to array of strings where the lines will be stored</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lines</td><td>The <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure whose contents that this function will write </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>The file to which the lines will be written </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of lines read</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>You must free the array of lines that this function returns manually or by calling <a class="el" href="lines_8h.html#a9323da426838711b078e6f709e7f1444" title="This function frees an array of strings.">free_lines</a>. This function reads lines until it encouters EOF </dd></dl>
 
 </div>
 </div>

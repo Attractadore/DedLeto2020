@@ -11,7 +11,7 @@
 #define ERROR_CHAR_NOT_VAL -1
 
 /**
- * \brief This function reverses a utf-8 string in place
+ * \brief This function reverses a utf-8 string in-place
  *
  * \param[in, out] s The string that will be reversed
  * 
@@ -20,7 +20,7 @@
 int string_reverse(char* s);
 
 /**
- * \brief This function determines how many chars a utf-8 symbol uses if it begins with the given char
+ * \brief This function determines how many chars a utf-8 symbol uses if it begins with a given char
  *
  * \param[in] c The char to analyze
  *
@@ -30,11 +30,11 @@ int string_reverse(char* s);
 int char_width(char c);
 
 /**
- * \brief This function checks if a char is alnum
+ * \brief This function checks if a char is alpha numeric
  *
  * \param[in] c the char to analyze
  *
- * \return 1 if 
+ * \return 1 if the given char is alpha numeric, 0 otherwise
  */
 int is_good(char c);
 
