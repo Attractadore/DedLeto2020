@@ -4,12 +4,12 @@
 #include <ctype.h>
 #include <string.h>
 
-#include <stdio.h>
-
 #define swap(t, a, b) \
-    t tmp = a;        \
-    a = b;            \
-    b = tmp;
+    {                 \
+        t tmp = a;    \
+        a = b;        \
+        b = tmp;      \
+    }
 
 int string_reverse(char* s) {
     assert(s);
@@ -32,19 +32,20 @@ int string_reverse(char* s) {
 }
 
 int char_width(char c) {
-    if ((~(1 << 7) & c) == c) {  // utf-8 1 byte symbols begin with 0xxxxxxx
+    unsigned char uc = c;  // Left shifting negative signed chars produces 1's
+    if (uc >> 7 == 0b0) {  // utf-8 1 byte symbols begin with 0xxxxxxx
         return 1;
     }
-    if ((~(1 << 6) & c) == c) {  // utf-8 multibyte symbols are continued with 10xxxxxx
+    if (uc >> 6 == 0b10) {  // utf-8 multibyte symbols are continued with 10xxxxxx
         return ERROR_CHAR_NOT_BEG;
     }
-    if ((~(1 << 5) & c) == c) {  // utf-8 2 byte symbols begin with 110xxxxx
+    if (uc >> 5 == 0b110) {  // utf-8 2 byte symbols begin with 110xxxxx
         return 2;
     }
-    if ((~(1 << 4) & c) == c) {  // utf-8 3 byte symbols begin with 1110xxxx
+    if (uc >> 4 == 0b1110) {  // utf-8 3 byte symbols begin with 1110xxxx
         return 3;
     }
-    if ((~(1 << 3) & c) == c) {  // utf-8 4 byte symbols begin with 11110xxx
+    if (uc >> 3 == 0b11110) {  // utf-8 4 byte symbols begin with 11110xxx
         return 4;
     }
     return ERROR_CHAR_NOT_VAL;
