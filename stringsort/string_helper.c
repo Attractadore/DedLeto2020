@@ -1,33 +1,34 @@
 #include "string_helper.h"
+#include "util.h"
 
 #include <assert.h>
 #include <ctype.h>
 #include <string.h>
 
-#define swap(t, a, b) \
-    {                 \
-        t tmp = a;    \
-        a = b;        \
-        b = tmp;      \
-    }
-
-int string_reverse(char* s) {
+int strrev(char* s) {
     assert(s);
 
     size_t s_len = strlen(s);
-    for (size_t i = 0; i < s_len / 2; i++) {
-        swap(char, s[i], s[s_len - i - 1])
+    if (!s_len) {
+        return STR_REV_SUCCESS;
     }
-    int w = 1;
-    for (int i = s_len - 1; i >= 0; i -= w) {
-        w = char_width(s[i]);
-        if (w == ERROR_CHAR_NOT_VAL || w == ERROR_CHAR_NOT_BEG || i < (w - 1)) {
+
+    for (size_t i = 0, j = s_len - 1; i < j; i++, j--) {
+        swap(char, s[i], s[j]);
+    }
+
+    int width = 1;
+    for (long int i = s_len - 1; i >= 0; i -= width) {
+        width = char_width(s[i]);
+        long int symbol_beg = i - (width - 1);
+        if (width == ERROR_CHAR_NOT_VAL || width == ERROR_CHAR_NOT_BEG || symbol_beg < 0) {
             return STR_REV_ERROR;
         }
-        for (int j = i - (w - 1); j < i - (w - 1) / 2; j++) {
-            swap(char, s[j], s[i - (j - i + (w - 1))]);
+        for (size_t j = symbol_beg, k = i; j < k; j++, k--) {
+            swap(char, s[j], s[k]);
         }
     }
+
     return STR_REV_SUCCESS;
 }
 
@@ -51,40 +52,35 @@ int char_width(char c) {
     return ERROR_CHAR_NOT_VAL;
 }
 
-int is_good(char c) {
+int is_alnum(char c) {
     return !(iscntrl(c) || isspace(c) || ispunct(c));
 }
 
-size_t find_good(char const* s, size_t i) {
-    while (!(s[i] == '\0' || is_good(s[i]))) {
-        i++;
+char const* find_alnum(char const* s) {
+    while (*s && !is_alnum(*s)) {
+        s++;
     }
-    return i;
+    return s;
 }
 
-int cmp_str(void const* left_value_p, void const* right_value_p) {
-    assert(left_value_p);
-    assert(right_value_p);
+int strcmp_alnum(char const* left_str, char const* right_str) {
+    assert(left_str);
+    assert(right_str);
 
-    char const* left_string = *((char const* const*) left_value_p);
-    char const* right_string = *((char const* const*) right_value_p);
-
-    size_t li = find_good(left_string, 0),
-           ri = find_good(right_string, 0);
-    while (left_string[li] != '\0' &&
-           right_string[ri] != '\0') {
-        if (left_string[li] == right_string[ri]) {
-            li = find_good(left_string, li + 1);
-            ri = find_good(right_string, ri + 1);
-            continue;
+    left_str = find_alnum(left_str);
+    right_str = find_alnum(right_str);
+    while (*left_str && *right_str) {
+        if (*left_str != *right_str) {
+            return *left_str - *right_str;
         }
-        return (left_string[li] < right_string[ri]) ? -1 : 1;
+        left_str = find_alnum(left_str + 1);
+        right_str = find_alnum(right_str + 1);
     }
 
-    if (left_string[li] == '\0' && right_string[ri] != '\0') {
+    if (!*left_str && *right_str) {
         return 1;
     }
-    if (left_string[li] != '\0' && right_string[ri] == '\0') {
+    if (*left_str && !*right_str) {
         return -1;
     }
     return 0;
