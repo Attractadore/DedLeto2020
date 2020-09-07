@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>DedLeto2020: stringsort/sort.h Source File</title>
+<title>DedLeto2020: stringsort/util.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
@@ -47,20 +48,25 @@
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">sort.h</div>  </div>
+<div class="title">util.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="sort_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<a href="util_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> <a class="code" href="sort_8h.html#af5885f8c870f89e7bf9ae73b6f06d6b9">cmp</a>(<span class="keywordtype">void</span> <span class="keyword">const</span>* lhs, <span class="keywordtype">void</span> <span class="keyword">const</span>* rhs);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#ad3dfbf6144b202998cc4fde943205120">sort_lines</a>(<span class="keywordtype">char</span>** lines, <span class="keywordtype">size_t</span> num_lines);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="util_8h.html#aec59bb64d89422aa8466fe18e148f1d7">   15</a></span>&#160;<span class="preprocessor">#define swap(t, a, b) \</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">    {                 \</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">        t tmp = a;    \</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">        a = b;        \</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">        b = tmp;      \</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">    }</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="util_8h.html#a5275648a0b9ea742d39dec7557da97c5">read_buffer</a>(FILE* input_file, <span class="keywordtype">char</span>** buf_p);</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="asort_8h_html_ad3dfbf6144b202998cc4fde943205120"><div class="ttname"><a href="sort_8h.html#ad3dfbf6144b202998cc4fde943205120">sort_lines</a></div><div class="ttdeci">void sort_lines(char **lines, size_t num_lines)</div><div class="ttdoc">This functions sorts an array of strings.</div><div class="ttdef"><b>Definition:</b> sort.c:12</div></div>
-<div class="ttc" id="asort_8h_html_af5885f8c870f89e7bf9ae73b6f06d6b9"><div class="ttname"><a href="sort_8h.html#af5885f8c870f89e7bf9ae73b6f06d6b9">cmp</a></div><div class="ttdeci">int cmp(void const *lhs, void const *rhs)</div><div class="ttdoc">This function can be used to compare string array elements.</div><div class="ttdef"><b>Definition:</b> sort.c:6</div></div>
+<div class="ttc" id="autil_8h_html_a5275648a0b9ea742d39dec7557da97c5"><div class="ttname"><a href="util_8h.html#a5275648a0b9ea742d39dec7557da97c5">read_buffer</a></div><div class="ttdeci">size_t read_buffer(FILE *input_file, char **buf_p)</div><div class="ttdoc">This function reads all of a file's contents into a buffer.</div><div class="ttdef"><b>Definition:</b> util.c:102</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

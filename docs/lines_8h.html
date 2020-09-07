@@ -49,6 +49,7 @@
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -64,6 +65,17 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__lines__s.html">_lines_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ae2b60a4754bef15a9c91e603875617c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#ae2b60a4754bef15a9c91e603875617c5">REVERSE_LINES_SUCCESS</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ae2b60a4754bef15a9c91e603875617c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ed777540b41cfafcbea4e5bb8337c32"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#a8ed777540b41cfafcbea4e5bb8337c32">REVERSE_LINES_ERROR</a>&#160;&#160;&#160;-1</td></tr>
+<tr class="separator:a8ed777540b41cfafcbea4e5bb8337c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b5881625b7ae646a30705397e819889"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#a3b5881625b7ae646a30705397e819889">WRITE_LINES_SUCCESS</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a3b5881625b7ae646a30705397e819889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae33cffe42e017e5ca285a7298f9a54ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#ae33cffe42e017e5ca285a7298f9a54ae">WRITE_LINES_ERROR</a>&#160;&#160;&#160;-1</td></tr>
+<tr class="separator:ae33cffe42e017e5ca285a7298f9a54ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a6d8e401e3f2f048ba9163c8c83d238c7"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__lines__s.html">_lines_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a></td></tr>
@@ -74,12 +86,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a5348a4a8d27f98a029fdb126fccdf507"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#a5348a4a8d27f98a029fdb126fccdf507">read_lines</a> (FILE *input_file)</td></tr>
 <tr class="memdesc:a5348a4a8d27f98a029fdb126fccdf507"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reads lines and stores them in a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure.  <a href="lines_8h.html#a5348a4a8d27f98a029fdb126fccdf507">More...</a><br /></td></tr>
 <tr class="separator:a5348a4a8d27f98a029fdb126fccdf507"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee530bcd5ebf5ffce6c289c2671370b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#aee530bcd5ebf5ffce6c289c2671370b3">reverse_lines</a> (<a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *lines)</td></tr>
-<tr class="memdesc:aee530bcd5ebf5ffce6c289c2671370b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reverses the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure without changing their order.  <a href="lines_8h.html#aee530bcd5ebf5ffce6c289c2671370b3">More...</a><br /></td></tr>
-<tr class="separator:aee530bcd5ebf5ffce6c289c2671370b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca8ccb56b1de59beb2f969a6238b8729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#aca8ccb56b1de59beb2f969a6238b8729">write_lines</a> (const <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *lines, FILE *file)</td></tr>
-<tr class="memdesc:aca8ccb56b1de59beb2f969a6238b8729"><td class="mdescLeft">&#160;</td><td class="mdescRight">This functions writes the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure to a file.  <a href="lines_8h.html#aca8ccb56b1de59beb2f969a6238b8729">More...</a><br /></td></tr>
-<tr class="separator:aca8ccb56b1de59beb2f969a6238b8729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4db9e3172a6199cfdfe3e4907eced4ee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#a4db9e3172a6199cfdfe3e4907eced4ee">reverse_lines</a> (<a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *lines)</td></tr>
+<tr class="memdesc:a4db9e3172a6199cfdfe3e4907eced4ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reverses the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure without changing their order.  <a href="lines_8h.html#a4db9e3172a6199cfdfe3e4907eced4ee">More...</a><br /></td></tr>
+<tr class="separator:a4db9e3172a6199cfdfe3e4907eced4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6133e4ea413c615c66a57fc8d61dd312"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#a6133e4ea413c615c66a57fc8d61dd312">write_lines</a> (const <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *lines, FILE *file)</td></tr>
+<tr class="memdesc:a6133e4ea413c615c66a57fc8d61dd312"><td class="mdescLeft">&#160;</td><td class="mdescRight">This functions writes the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure to a file.  <a href="lines_8h.html#a6133e4ea413c615c66a57fc8d61dd312">More...</a><br /></td></tr>
+<tr class="separator:a6133e4ea413c615c66a57fc8d61dd312"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1c97a3aea208dd234ee5a5ca08794c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lines_8h.html#ae1c97a3aea208dd234ee5a5ca08794c0">sort_lines</a> (<a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *lines)</td></tr>
 <tr class="memdesc:ae1c97a3aea208dd234ee5a5ca08794c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function sorts the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure.  <a href="lines_8h.html#ae1c97a3aea208dd234ee5a5ca08794c0">More...</a><br /></td></tr>
 <tr class="separator:ae1c97a3aea208dd234ee5a5ca08794c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -89,7 +101,68 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file defines functions for working with arrays of strings </p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a8ed777540b41cfafcbea4e5bb8337c32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ed777540b41cfafcbea4e5bb8337c32">&#9670;&nbsp;</a></span>REVERSE_LINES_ERROR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REVERSE_LINES_ERROR&#160;&#160;&#160;-1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Symbolic parameter indicating that an error occured while reversing lines </p>
+
+</div>
+</div>
+<a id="ae2b60a4754bef15a9c91e603875617c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2b60a4754bef15a9c91e603875617c5">&#9670;&nbsp;</a></span>REVERSE_LINES_SUCCESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REVERSE_LINES_SUCCESS&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Symbolic parameter indicating that all lines were reversed successfully </p>
+
+</div>
+</div>
+<a id="ae33cffe42e017e5ca285a7298f9a54ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae33cffe42e017e5ca285a7298f9a54ae">&#9670;&nbsp;</a></span>WRITE_LINES_ERROR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WRITE_LINES_ERROR&#160;&#160;&#160;-1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Symbolic parameter indicating that an error occured while writing lines </p>
+
+</div>
+</div>
+<a id="a3b5881625b7ae646a30705397e819889"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b5881625b7ae646a30705397e819889">&#9670;&nbsp;</a></span>WRITE_LINES_SUCCESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WRITE_LINES_SUCCESS&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Symbolic parameter indicating that all lines were write successfully </p>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
 <a id="a6d8e401e3f2f048ba9163c8c83d238c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d8e401e3f2f048ba9163c8c83d238c7">&#9670;&nbsp;</a></span>LINES</h2>
 
@@ -155,19 +228,19 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure describing the read lines</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>You can free the returned structure by calling <a class="el" href="lines_8h.html#aadd3b27ebca0064e0cfd0e51bfd4e0ca" title="This function frees the LINES structure returned by read_lines.">free_lines</a>. This function reads lines until it encouters EOF </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure describing the read lines if no error, NULL if an error occured</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>You can free the returned structure (if it is not NULL) by calling <a class="el" href="lines_8h.html#aadd3b27ebca0064e0cfd0e51bfd4e0ca" title="This function frees the LINES structure returned by read_lines.">free_lines</a>. This function reads lines until it encouters EOF </dd></dl>
 
 </div>
 </div>
-<a id="aee530bcd5ebf5ffce6c289c2671370b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee530bcd5ebf5ffce6c289c2671370b3">&#9670;&nbsp;</a></span>reverse_lines()</h2>
+<a id="a4db9e3172a6199cfdfe3e4907eced4ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4db9e3172a6199cfdfe3e4907eced4ee">&#9670;&nbsp;</a></span>reverse_lines()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void reverse_lines </td>
+          <td class="memname">int reverse_lines </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *&#160;</td>
           <td class="paramname"><em>lines</em></td><td>)</td>
@@ -179,10 +252,11 @@ Functions</h2></td></tr>
 <p>This function reverses the contents of a <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure without changing their order. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">lines</td><td>The <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure whose contents this this function will operate on </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lines</td><td>The <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure whose contents this this function will operate on</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="lines_8h.html#ae2b60a4754bef15a9c91e603875617c5">REVERSE_LINES_SUCCESS</a> if no error occured, <a class="el" href="lines_8h.html#a8ed777540b41cfafcbea4e5bb8337c32">REVERSE_LINES_ERROR</a> otherwise </dd></dl>
 
 </div>
 </div>
@@ -212,14 +286,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aca8ccb56b1de59beb2f969a6238b8729"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca8ccb56b1de59beb2f969a6238b8729">&#9670;&nbsp;</a></span>write_lines()</h2>
+<a id="a6133e4ea413c615c66a57fc8d61dd312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6133e4ea413c615c66a57fc8d61dd312">&#9670;&nbsp;</a></span>write_lines()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void write_lines </td>
+          <td class="memname">int write_lines </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> *&#160;</td>
           <td class="paramname"><em>lines</em>, </td>
@@ -242,10 +316,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">lines</td><td>The <a class="el" href="lines_8h.html#a6d8e401e3f2f048ba9163c8c83d238c7">LINES</a> structure whose contents that this function will write </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>The file to which the lines will be written </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>The file to which the lines will be written</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="lines_8h.html#a3b5881625b7ae646a30705397e819889">WRITE_LINES_SUCCESS</a> if no error occured, <a class="el" href="lines_8h.html#ae33cffe42e017e5ca285a7298f9a54ae">WRITE_LINES_ERROR</a> otherwise </dd></dl>
 
 </div>
 </div>
