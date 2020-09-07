@@ -10,6 +10,22 @@ LINES* read_lines(FILE* input_file) {
 
     char* string_buffer = NULL;
     size_t string_buffer_size = read_buffer(input_file, &string_buffer);
+    if (!string_buffer || !string_buffer_size) {
+        return NULL;
+    }
+
+    // If our input doesn't end with a new line, append one
+    if (string_buffer[string_buffer_size - 1] != '\n') {
+        string_buffer_size++;
+        char* new_string_buffer = realloc(string_buffer, string_buffer_size);
+        if (!new_string_buffer) {
+            free(string_buffer);
+            return NULL;
+        }
+        string_buffer[string_buffer_size - 1] = '\n';
+    }
+
+    assert(string_buffer);
 
     size_t lines_buffer_size = 0;
     for (size_t i = 0; i < string_buffer_size; i++) {
@@ -19,7 +35,11 @@ LINES* read_lines(FILE* input_file) {
         lines_buffer_size += (string_buffer[i] == '\0');
     }
     size_t num_read_lines = 0;
-    char** lines = malloc(sizeof(*lines) * lines_buffer_size);
+    char** lines = calloc(lines_buffer_size, sizeof(*lines));
+    if (!lines) {
+        free(string_buffer);
+        return NULL;
+    }
 
     char p = '\0';
     for (size_t i = 0; i < string_buffer_size; i++) {
@@ -29,7 +49,15 @@ LINES* read_lines(FILE* input_file) {
         p = string_buffer[i];
     }
 
-    LINES* lines_s = malloc(sizeof(*lines_s));
+    assert(num_read_lines == lines_buffer_size);
+
+    LINES* lines_s = calloc(1, sizeof(*lines_s));
+    if (!lines_s) {
+        free(lines);
+        free(string_buffer);
+        return NULL;
+    }
+
     lines_s->_lines = lines;
     lines_s->_num_lines = num_read_lines;
     lines_s->_string_buffer = string_buffer;
@@ -38,21 +66,27 @@ LINES* read_lines(FILE* input_file) {
     return lines_s;
 }
 
-void reverse_lines(LINES* lines) {
+int reverse_lines(LINES* lines) {
     assert(lines);
 
     for (size_t i = 0; i < lines->_num_lines; i++) {
-        strrev(lines->_lines[i]);
+        if (strrev(lines->_lines[i]) != STR_REV_SUCCESS) {
+            return REVERSE_LINES_ERROR;
+        }
     }
+    return REVERSE_LINES_SUCCESS;
 }
 
-void write_lines(const LINES* lines, FILE* file) {
+int write_lines(const LINES* lines, FILE* file) {
     assert(lines);
     assert(file);
 
     for (size_t i = 0; i < lines->_num_lines; i++) {
-        fprintf(file, "%s\n", lines->_lines[i]);
+        if (fprintf(file, "%s\n", lines->_lines[i]) < 0) {
+            return WRITE_LINES_ERROR;
+        }
     }
+    return WRITE_LINES_SUCCESS;
 }
 
 int qsort_strcmp(void const* left_value_p, void const* right_value_p) {

@@ -20,22 +20,6 @@
     }
 
 /**
- * \brief This macro allows you to use existing comparison functions with qsort
- *
- * \param t The type of the arguments the base comparison function uses
- * \param compare_f The name of the base comparison function
- * \param adapt_f The name of the adapted comparison function
- *
- * \remark This macro defines the function adapt_f
- */
-#define qsort_adapt_f(t, compare_f, adapt_f)                              \
-    int adapt_name(void const* left_value_p, void const* right_value_p) { \
-        t const* left_p = left_value_p;                                   \
-        t const* right_p = right_value_p;                                 \
-        return compare_f(*left_p, *right_p);                              \
-    }
-
-/**
  * \brief This function reads all of a file's contents into a buffer
  *
  * \param[in] input_file The file from which to read

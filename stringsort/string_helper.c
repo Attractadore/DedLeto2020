@@ -57,6 +57,8 @@ int is_alnum(char c) {
 }
 
 char const* find_alnum(char const* s) {
+    assert(s);
+
     while (*s && !is_alnum(*s)) {
         s++;
     }

@@ -1,6 +1,5 @@
 #include "file.h"
-#include "lines.h"
-#include "print_help.h"
+#include "program.h"
 
 #include <stdlib.h>
 
@@ -25,13 +24,15 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 
-    LINES* lines = read_lines(input_file);
-    sort_lines(lines);
-    write_lines(lines, output_file);
-    free_lines(lines);
+    int err = enc_sort(input_file, output_file);
+    print_enc_sort_error(err);
 
     close_file(input_file);
     close_file(output_file);
+
+    if (err != ENC_SORT_SUCCESS) {
+        return EXIT_FAILURE;
+    }
 
     return EXIT_SUCCESS;
 }
