@@ -22,6 +22,7 @@ LINES* read_lines(FILE* input_file) {
             free(string_buffer);
             return NULL;
         }
+        string_buffer = new_string_buffer;
         string_buffer[string_buffer_size - 1] = '\n';
     }
 

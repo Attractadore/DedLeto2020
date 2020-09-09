@@ -50,6 +50,7 @@ void print_enc_sort_error(int err) {
             fprintf(stderr, "Runtime error: failed to write output\n");
             break;
         default:
+            fprintf(stderr, "Runtime error: unknown error\n");
             break;
     }
 }
@@ -66,6 +67,7 @@ void print_rhy_sort_error(int err) {
             fprintf(stderr, "Runtime error: failed to write output\n");
             break;
         default:
+            fprintf(stderr, "Runtime error: unknown error\n");
             break;
     }
 }
