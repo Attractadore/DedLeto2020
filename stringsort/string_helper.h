@@ -24,6 +24,33 @@
 int strrev(char* s);
 
 /**
+ * \brief This function counts how many times a substring occurs in a string
+ *
+ * \param[in] s The string in which to count a substring's occurances
+ * \param[in] cnt The substring whose number of occurances to count
+ * \param[in] n The maximum number of characters in \c s to process
+ *
+ * \return The number of occurances of \c cnt in \c s
+ *
+ * \remark This function counts occurances of \c cnt in \c s either until has encountered \c '\0' or it has processed \c num chars;
+ *         This function counts non-overlapping substrings
+ */
+size_t strncnt(char const* s, char const* cnt, size_t num);
+
+/**
+ * \brief This function replaces all occurances of one substring in a string with another substring
+ *
+ * \param[in, out] s The string this function will operate on
+ * \param[in] rep_from The substring to replace
+ * \param[in] rep_with The substring to replace with
+ * \param[in] num The maximum number of characters in \c s to process
+ *
+ * \remark This function replaces substrings in \c either until it has encoutered \c '\0' or it has processed \c num chars;
+ *         This function will fill \c s with at most <tt>num - 1</tt> characters and a terminating \c '\0'
+ */
+void strnrep(char* s, char const* rep_from, char const* rep_with, size_t num);
+
+/**
  * \brief This function determines how many chars a utf-8 symbol uses if it begins with a given char
  *
  * \param[in] c The char to analyze

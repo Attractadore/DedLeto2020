@@ -5,6 +5,19 @@
 #include <assert.h>
 #include <stdlib.h>
 
+// If our input doesn't end with a new line, append one
+size_t sanitize_buffer(char** buffer_ptr, size_t buffer_size) {
+    if ((*buffer_ptr)[buffer_size - 1] != '\n') {
+        buffer_size++;
+        char* new_buffer = realloc(*buffer_ptr, buffer_size);
+        if (new_buffer) {
+            return 0;
+        }
+        new_buffer[buffer_size - 1] = '\n';
+    }
+    return buffer_size;
+}
+
 LINES* read_lines(FILE* input_file) {
     assert(input_file);
 
@@ -14,27 +27,16 @@ LINES* read_lines(FILE* input_file) {
         return NULL;
     }
 
-    // If our input doesn't end with a new line, append one
-    if (string_buffer[string_buffer_size - 1] != '\n') {
-        string_buffer_size++;
-        char* new_string_buffer = realloc(string_buffer, string_buffer_size);
-        if (!new_string_buffer) {
-            free(string_buffer);
-            return NULL;
-        }
-        string_buffer = new_string_buffer;
-        string_buffer[string_buffer_size - 1] = '\n';
+    string_buffer_size = sanitize_buffer(&string_buffer, string_buffer_size);
+    if (!string_buffer_size) {
+        free(string_buffer);
+        return NULL;
     }
 
     assert(string_buffer);
 
-    size_t lines_buffer_size = 0;
-    for (size_t i = 0; i < string_buffer_size; i++) {
-        if (string_buffer[i] == '\n') {
-            string_buffer[i] = '\0';
-        }
-        lines_buffer_size += (string_buffer[i] == '\0');
-    }
+    size_t lines_buffer_size = strncnt(string_buffer, "\n", string_buffer_size);
+    strnrep(string_buffer, "\n", "\0", string_buffer_size);
     size_t num_read_lines = 0;
     char** lines = calloc(lines_buffer_size, sizeof(*lines));
     if (!lines) {
