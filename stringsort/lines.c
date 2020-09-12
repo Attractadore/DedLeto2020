@@ -7,6 +7,8 @@
 
 // If our input doesn't end with a new line, append one
 size_t sanitize_buffer(char** buffer_ptr, size_t buffer_size) {
+    assert(buffer_ptr);
+
     if ((*buffer_ptr)[buffer_size - 1] != '\n') {
         buffer_size++;
         char* new_buffer = realloc(*buffer_ptr, buffer_size);
