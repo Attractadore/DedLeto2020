@@ -43,6 +43,8 @@ int rhy_sort(FILE* input_file, FILE* output_file) {
 
 void print_enc_sort_error(int err) {
     switch (err) {
+        case RHY_SORT_SUCCESS:
+            break;
         case ENC_SORT_READ_ERROR:
             fprintf(stderr, "Runtime error: failed to get input\n");
             break;
@@ -57,6 +59,8 @@ void print_enc_sort_error(int err) {
 
 void print_rhy_sort_error(int err) {
     switch (err) {
+        case RHY_SORT_SUCCESS:
+            break;
         case RHY_SORT_READ_ERROR:
             fprintf(stderr, "Runtime error: failed to get input\n");
             break;
