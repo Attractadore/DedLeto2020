@@ -18,6 +18,30 @@ size_t sanitize_buffer(char** buffer_ptr, size_t buffer_size) {
     return buffer_size;
 }
 
+size_t assign_lines(char*** lines_ptr, size_t lines_buffer_size, char* string_buffer, size_t string_buffer_size){
+    assert(lines_ptr);
+    assert(string_buffer);
+
+    *lines_ptr = NULL;
+
+    char** lines = calloc(lines_buffer_size, sizeof(*lines));
+    if (!lines) {
+        return 0;
+    }
+
+    *lines_ptr = lines;
+
+    size_t num_read_lines = 0;
+    char p = '\0';
+    for (size_t i = 0; i < string_buffer_size; i++) {
+        if (p == '\0') {
+            lines[num_read_lines++] = string_buffer + i;
+        }
+        p = string_buffer[i];
+    }
+    return num_read_lines;
+}
+
 LINES* read_lines(FILE* input_file) {
     assert(input_file);
 
@@ -44,21 +68,14 @@ LINES* read_lines(FILE* input_file) {
         }
         assert(replace_sbuffer_size == string_buffer_size);
     }
-    size_t num_read_lines = 0;
-    char** lines = calloc(lines_buffer_size, sizeof(*lines));
-    if (!lines) {
+
+    char** lines = NULL;
+    size_t num_read_lines = assign_lines(&lines, lines_buffer_size, string_buffer, string_buffer_size);
+    if (!num_read_lines) {
+        free(lines);
         free(string_buffer);
         return NULL;
     }
-
-    char p = '\0';
-    for (size_t i = 0; i < string_buffer_size; i++) {
-        if (p == '\0') {
-            lines[num_read_lines++] = string_buffer + i;
-        }
-        p = string_buffer[i];
-    }
-
     assert(num_read_lines == lines_buffer_size);
 
     LINES* lines_s = calloc(1, sizeof(*lines_s));
