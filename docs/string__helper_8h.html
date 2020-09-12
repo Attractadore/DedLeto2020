@@ -74,6 +74,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a43525a73a43f8f7d591a832cf8f1c8ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#a43525a73a43f8f7d591a832cf8f1c8ae">strrev</a> (char *s)</td></tr>
 <tr class="memdesc:a43525a73a43f8f7d591a832cf8f1c8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reverses a utf-8 string in-place.  <a href="string__helper_8h.html#a43525a73a43f8f7d591a832cf8f1c8ae">More...</a><br /></td></tr>
 <tr class="separator:a43525a73a43f8f7d591a832cf8f1c8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81b4a1d46148b1ccfbb97fbb1ce1f0bd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#a81b4a1d46148b1ccfbb97fbb1ce1f0bd">strncnt</a> (char const *str, size_t num, char const *cnt, size_t cnt_len)</td></tr>
+<tr class="memdesc:a81b4a1d46148b1ccfbb97fbb1ce1f0bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function counts how many times a substring occurs in a string.  <a href="string__helper_8h.html#a81b4a1d46148b1ccfbb97fbb1ce1f0bd">More...</a><br /></td></tr>
+<tr class="separator:a81b4a1d46148b1ccfbb97fbb1ce1f0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd1d43f4e8db8a1a1df161aa38ba2ecc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#acd1d43f4e8db8a1a1df161aa38ba2ecc">strnrep</a> (char *str, size_t num, char const *rep_from, size_t rep_from_len, char const *rep_with, size_t rep_with_len)</td></tr>
+<tr class="memdesc:acd1d43f4e8db8a1a1df161aa38ba2ecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function replaces all occurances of one substring in a string with another substring.  <a href="string__helper_8h.html#acd1d43f4e8db8a1a1df161aa38ba2ecc">More...</a><br /></td></tr>
+<tr class="separator:acd1d43f4e8db8a1a1df161aa38ba2ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd0d1ccb1f131ada9a4838a8ace2973c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#acd0d1ccb1f131ada9a4838a8ace2973c">char_width</a> (char c)</td></tr>
 <tr class="memdesc:acd0d1ccb1f131ada9a4838a8ace2973c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function determines how many chars a utf-8 symbol uses if it begins with a given char.  <a href="string__helper_8h.html#acd0d1ccb1f131ada9a4838a8ace2973c">More...</a><br /></td></tr>
 <tr class="separator:acd0d1ccb1f131ada9a4838a8ace2973c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -267,6 +273,126 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>&lt; 0 if left_str &lt; right_str, 0 if left_str == right_str, &gt; 0 if left_str &gt; right_str</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This function considers empty strings to be greater than any other string </dd></dl>
+
+</div>
+</div>
+<a id="a81b4a1d46148b1ccfbb97fbb1ce1f0bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81b4a1d46148b1ccfbb97fbb1ce1f0bd">&#9670;&nbsp;</a></span>strncnt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t strncnt </td>
+          <td>(</td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>cnt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>cnt_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function counts how many times a substring occurs in a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str</td><td>The string in which to count a substring's occurances </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>The maximum number of characters in <code>str</code> to process </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cnt</td><td>The substring whose number of occurances to count </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cnt_len</td><td>The length of the substring to search for</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of occurances of <code>cnt</code> in <code>str</code> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This function counts occurances of <code>cnt</code> in <code>str</code> either until has encountered <code>'\0'</code> or it has processed <code>num</code> chars; <code>cnt_len</code> is not required to be null-terminated; This function counts non-overlapping substrings; </dd></dl>
+
+</div>
+</div>
+<a id="acd1d43f4e8db8a1a1df161aa38ba2ecc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd1d43f4e8db8a1a1df161aa38ba2ecc">&#9670;&nbsp;</a></span>strnrep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t strnrep </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>rep_from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>rep_from_len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>rep_with</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>rep_with_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function replaces all occurances of one substring in a string with another substring. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">str</td><td>The string this function will operate on </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>The maximum number of characters in <code>s</code> to process </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rep_from</td><td>The substring to replace </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rep_from_len</td><td>The length substring to replace </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rep_with</td><td>The substring to replace with </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rep_with_len</td><td>The length substring to replace with</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The length of the new string, or 0 if an error occured</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This function replaces substrings in <code>str</code> either until it has encoutered <code>'\0'</code> or it has processed <code>num</code> chars; <code>rep_from</code> and <code>rep_with</code> are not required to be null-terminated; If the resulting string is shorter than the orignal one, it will be padded with <code>'\0'</code>; If the resulting string is longer than the orignal one, at most <code>num</code> chars will be written to <code>str</code>, including a terminating <code>'\0'</code>; </dd></dl>
 
 </div>
 </div>

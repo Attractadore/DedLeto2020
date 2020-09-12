@@ -54,7 +54,7 @@ size_t strncnt(char const* str, size_t num, char const* cnt, size_t cnt_len);
  * \remark This function replaces substrings in \c str either until it has encoutered \c '\0' or it has processed \c num chars;
  *         \c rep_from and \c rep_with are not required to be null-terminated;
  *         If the resulting string is shorter than the orignal one, it will be padded with \c '\0';
- *         If the resulting string is longer than the orignal one, at most \c num chars will be written to \с s, including a terminating '\0';
+ *         If the resulting string is longer than the orignal one, at most \c num chars will be written to \c str, including a terminating \c '\0';
  */
 size_t strnrep(char* str, size_t num, char const* rep_from, size_t rep_from_len, char const* rep_with, size_t rep_with_len);
 
