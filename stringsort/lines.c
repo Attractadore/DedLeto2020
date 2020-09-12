@@ -35,8 +35,15 @@ LINES* read_lines(FILE* input_file) {
 
     assert(string_buffer);
 
-    size_t lines_buffer_size = strncnt(string_buffer, "\n", string_buffer_size);
-    strnrep(string_buffer, "\n", "\0", string_buffer_size);
+    size_t lines_buffer_size = strncnt(string_buffer, string_buffer_size, "\n", 1);
+    {
+        size_t replace_sbuffer_size = strnrep(string_buffer, string_buffer_size, "\n", 1, "\0", 1);
+        if (!replace_sbuffer_size) {
+            free(string_buffer);
+            return NULL;
+        }
+        assert(replace_sbuffer_size == string_buffer_size);
+    }
     size_t num_read_lines = 0;
     char** lines = calloc(lines_buffer_size, sizeof(*lines));
     if (!lines) {

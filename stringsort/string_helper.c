@@ -3,6 +3,7 @@
 
 #include <assert.h>
 #include <ctype.h>
+#include <stdlib.h>
 #include <string.h>
 
 int strrev(char* s) {
@@ -30,6 +31,107 @@ int strrev(char* s) {
     }
 
     return STR_REV_SUCCESS;
+}
+
+size_t strncnt(char const* str, size_t num, char const* cnt, size_t cnt_len) {
+    assert(str);
+    assert(cnt);
+
+    if (!cnt_len) {
+        return 0;
+    }
+
+    size_t num_cnt = 0;
+    size_t i = 0;
+    while (i <= (num - cnt_len) && str[i]) {
+        if (strncmp(str + i, cnt, cnt_len) == 0) {
+            num_cnt++;
+            i += cnt_len;
+        } else {
+            i++;
+        }
+    }
+
+    return num_cnt;
+}
+
+size_t strnrep_le(char* str, size_t num, char const* rep_from, size_t rep_from_len, char const* rep_with, size_t rep_with_len) {
+    assert(str);
+    assert(rep_from);
+    assert(rep_from_len);
+    assert(rep_with);
+    assert(rep_with_len <= rep_from_len);
+
+    size_t num_rep = 0,
+           i = 0,
+           r = 0;
+    while (i < num && str[i]) {
+        if (i <= (num - rep_from_len) && strncmp(str + i, rep_from, rep_from_len) == 0) {
+            memcpy(str + r, rep_with, rep_with_len);
+            i += rep_from_len;
+            r += rep_with_len;
+            num_rep++;
+        } else {
+            str[r++] = str[i++];
+        }
+    }
+
+    assert(r <= i);
+
+    memset(str + r, 0, i - r);
+
+    return r;
+}
+
+size_t strnrep_g(char* str, size_t num, char const* rep_from, size_t rep_from_len, char const* rep_with, size_t rep_with_len) {
+    assert(str);
+    assert(rep_from);
+    assert(rep_from_len);
+    assert(rep_with);
+    assert(rep_with_len > rep_from_len);
+
+    char* tmp_str = calloc(num, sizeof(char));
+    if (!tmp_str) {
+        return 0;
+    }
+
+    size_t i = 0,
+           r = 0;
+    while (r < num - 1 && i < num && str[i]) {
+        if (i <= (num - rep_from_len) && strncmp(str + i, rep_from, rep_from_len) == 0) {
+            size_t num_copy = rep_with_len;
+            if (r + num_copy >= num) {
+                num_copy = num - r - 1;
+            }
+            memcpy(tmp_str + r, rep_with, num_copy);
+            i += rep_from_len;
+            r += num_copy;
+        } else {
+            tmp_str[r++] = str[i++];
+        }
+    }
+
+    assert(r >= i);
+    assert(tmp_str[num - 1] == '\0');
+
+    strcpy(str, tmp_str);
+    free(tmp_str);
+
+    return r;
+}
+
+size_t strnrep(char* str, size_t num, char const* rep_from, size_t rep_from_len, char const* rep_with, size_t rep_with_len) {
+    assert(str);
+    assert(rep_from);
+    assert(rep_with);
+
+    if (!rep_from_len) {
+        return 0;
+    }
+    if (rep_with_len <= rep_from_len) {
+        return strnrep_le(str, num, rep_from, rep_from_len, rep_with, rep_with_len);
+    }
+    return strnrep_g(str, num, rep_from, rep_from_len, rep_with, rep_with_len);
 }
 
 int char_width(char c) {
