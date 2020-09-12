@@ -10,23 +10,20 @@ int strrev(char* s) {
     assert(s);
 
     size_t s_len = strlen(s);
-    if (!s_len) {
-        return STR_REV_SUCCESS;
-    }
 
-    for (size_t i = 0, j = s_len - 1; i < j; i++, j--) {
-        swap(char, s[i], s[j]);
+    for (char* fore_p = s, *back_p = s + s_len - 1; fore_p < back_p; fore_p++, back_p--) {
+        swap(char, *fore_p, *back_p);
     }
 
     int width = 1;
-    for (long int i = s_len - 1; i >= 0; i -= width) {
-        width = char_width(s[i]);
-        long int symbol_beg = i - (width - 1);
-        if (width == ERROR_CHAR_NOT_VAL || width == ERROR_CHAR_NOT_BEG || symbol_beg < 0) {
+    for (char* back_p = s + s_len - 1; back_p >= s; back_p -= width) {
+        width = char_width(*back_p);
+        char* beg_p = back_p - (width - 1);
+        if (width == ERROR_CHAR_NOT_VAL || width == ERROR_CHAR_NOT_BEG || beg_p < s) {
             return STR_REV_ERROR;
         }
-        for (size_t j = symbol_beg, k = i; j < k; j++, k--) {
-            swap(char, s[j], s[k]);
+        for (char* end_p = back_p; beg_p < end_p; beg_p++, end_p--) {
+            swap(char, *beg_p, *end_p);
         }
     }
 
