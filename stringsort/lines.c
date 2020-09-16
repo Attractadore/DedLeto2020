@@ -138,8 +138,5 @@ void free_lines(LINES* lines) {
 
     free(lines->_lines);
     free(lines->_string_buffer);
-    lines->_lines = NULL;
-    lines->_num_lines = 0;
-    lines->_string_buffer = NULL;
-    lines->_string_buffer_size = 0;
+    free(lines);
 }
