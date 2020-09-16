@@ -33,7 +33,7 @@ size_t read_buffer_stream(FILE* input_file, char** buffer_p) {
     while ((c = fgetc(input_file)) != EOF) {
         if (num_read_chars == buffer_size) {
             size_t new_buffer_size = buffer_size * 2;
-            char* new_buffer = realloc(buffer, buffer_size);
+            char* new_buffer = realloc(buffer, new_buffer_size);
             if (!new_buffer) {
                 break;
             }
