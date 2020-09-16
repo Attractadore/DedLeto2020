@@ -93,7 +93,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if successfully closed file, EOF otherwise</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This function will not try to close stdin or stdout </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Trying to close stdin, stdout or stderr will result in an error </dd></dl>
 
 </div>
 </div>
@@ -132,7 +132,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>FILE* if the file was successfully opened, NULL otherwise</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>file_name can be stdin or stdout; mode takes the same values as fopen's mode parameter </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>file_name can be stdin, stdout or stderr; mode takes the same values as fopen's mode parameter; Trying to open stdin in modes other than "r" or "rb" and stdout or stderr in modes other than "w", "wb", "a" or "ab" will result in an error </dd></dl>
 
 </div>
 </div>

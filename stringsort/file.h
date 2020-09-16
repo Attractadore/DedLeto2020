@@ -13,9 +13,11 @@
  *
  * \return FILE* if the file was successfully opened, NULL otherwise
  *
- * \remark file_name can be stdin or stdout;
- *         mode takes the same values as fopen's mode parameter
- *
+ * \remark file_name can be stdin, stdout or stderr;
+ *         mode takes the same values as fopen's mode parameter;
+ *         Trying to open stdin in modes other than "r" or "rb"
+ *         and stdout or stderr in modes other than "w", "wb", "a" or "ab"
+ *         will result in an error
  */
 FILE* open_file(const char* file_name, const char* mode);
 
@@ -26,6 +28,6 @@ FILE* open_file(const char* file_name, const char* mode);
  *
  * \return 0 if successfully closed file, EOF otherwise
  *
- * \remark This function will not try to close stdin or stdout
+ * \remark Trying to close stdin, stdout or stderr will result in an error
  */
 int close_file(FILE* file);
