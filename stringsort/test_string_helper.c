@@ -38,7 +38,6 @@ START_TEST(test_strrev_broken_utf_8_string_return_1) {
     char str[] = "hello \x80world";
     int ret = strrev(str);
     ck_assert_msg(ret == STR_REV_ERROR, "Expected failure to reverse broken UTF-8 string: expected %d, got %d", STR_REV_ERROR, ret);
-
 }
 END_TEST
 
@@ -46,7 +45,6 @@ START_TEST(test_strrev_broken_utf_8_string_return_2) {
     char str[] = "hello world\xC0";
     int ret = strrev(str);
     ck_assert_msg(ret == STR_REV_ERROR, "Expected failure to reverse broken UTF-8 string: expected %d, got %d", STR_REV_ERROR, ret);
-
 }
 END_TEST
 
@@ -54,7 +52,6 @@ START_TEST(test_strrev_broken_utf_8_string_return_3) {
     char str[] = "привет \x80мир";
     int ret = strrev(str);
     ck_assert_msg(ret == STR_REV_ERROR, "Expected failure to reverse broken UTF-8 string: expected %d, got %d", STR_REV_ERROR, ret);
-
 }
 END_TEST
 
@@ -62,7 +59,6 @@ START_TEST(test_strrev_broken_utf_8_string_return_4) {
     char str[] = "привет мир\xC0";
     int ret = strrev(str);
     ck_assert_msg(ret == STR_REV_ERROR, "Expected failure to reverse broken UTF-8 string: expected %d, got %d", STR_REV_ERROR, ret);
-
 }
 END_TEST
 
@@ -71,7 +67,7 @@ START_TEST(test_strncnt_ascii_single_char) {
     char const cnt_str[] = "i";
     size_t cnt = strncnt(str, strlen(str), cnt_str, strlen(cnt_str));
     size_t const expected_cnt = 5;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -80,7 +76,7 @@ START_TEST(test_strncnt_ascii_substring) {
     char const cnt_str[] = " asd";
     size_t cnt = strncnt(str, strlen(str), cnt_str, strlen(cnt_str));
     size_t expected_cnt = 3;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -89,7 +85,7 @@ START_TEST(test_strncnt_utf_8_single_symbol) {
     char const cnt_str[] = "ы";
     size_t cnt = strncnt(str, strlen(str), cnt_str, strlen(cnt_str));
     size_t expected_cnt = 5;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -98,7 +94,7 @@ START_TEST(test_strncnt_utf_8_substring) {
     char const cnt_str[] = " фыв";
     size_t cnt = strncnt(str, strlen(str), cnt_str, strlen(cnt_str));
     size_t expected_cnt = 3;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -107,7 +103,7 @@ START_TEST(test_strncnt_ascii_overlap) {
     char const cnt_str[] = "ii";
     size_t cnt = strncnt(str, strlen(str), cnt_str, strlen(cnt_str));
     size_t expected_cnt = 3;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -116,7 +112,7 @@ START_TEST(test_strncnt_utf_8_overlap) {
     char const cnt_str[] = "ыы";
     size_t cnt = strncnt(str, strlen(str), cnt_str, strlen(cnt_str));
     size_t expected_cnt = 3;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -126,7 +122,7 @@ START_TEST(test_strncnt_part_of_str_less) {
     size_t str_num = 5;
     size_t cnt = strncnt(str, str_num, cnt_str, strlen(cnt_str));
     size_t expected_cnt = 4;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in at most %ld chars of string \"%s\": expected %ld, got %ld", cnt_str, str_num, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in at most %ld chars of string \"%s\": expected %ld, got %ld", cnt_str, str_num, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -136,7 +132,7 @@ START_TEST(test_strncnt_part_of_str_more) {
     size_t str_num = strlen(str) + 1;
     size_t cnt = strncnt(str, str_num, cnt_str, strlen(cnt_str));
     size_t expected_cnt = 7;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in at most %ld chars of string \"%s\": expected %ld, got %ld", cnt_str, str_num, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in at most %ld chars of string \"%s\": expected %ld, got %ld", cnt_str, str_num, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -146,7 +142,7 @@ START_TEST(test_strncnt_part_of_cnt_less) {
     size_t cnt_num = 2;
     size_t cnt = strncnt(str, strlen(str), cnt_str, cnt_num);
     size_t expected_cnt = 3;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of occurances of substring of at most %ld chars \"%s\" in string \"%s\": expected %ld, got %ld", cnt_num, cnt_str, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of occurances of substring of at most %ld chars \"%s\" in string \"%s\": expected %ld, got %ld", cnt_num, cnt_str, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -156,7 +152,7 @@ START_TEST(test_strncnt_part_of_cnt_more) {
     size_t cnt_num = strlen(cnt_str) + 1;
     size_t cnt = strncnt(str, strlen(str), cnt_str, cnt_num);
     size_t expected_cnt = 2;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of occurances of substring of at most %ld chars \"%s\" in string \"%s\": expected %ld, got %ld", cnt_num, cnt_str, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of occurances of substring of at most %ld chars \"%s\" in string \"%s\": expected %ld, got %ld", cnt_num, cnt_str, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -165,7 +161,7 @@ START_TEST(test_strncnt_empty_str) {
     char const cnt_str[] = "123";
     size_t cnt = strncnt(str, strlen(str), cnt_str, strlen(cnt_str));
     size_t expected_cnt = 0;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -174,7 +170,7 @@ START_TEST(test_strncnt_empty_cnt) {
     char const cnt_str[] = "";
     size_t cnt = strncnt(str, strlen(str), cnt_str, strlen(cnt_str));
     size_t expected_cnt = 0;
-    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt); 
+    ck_assert_msg(cnt == expected_cnt, "Failed to count number of substring \"%s\" occurances in string \"%s\": expected %ld, got %ld", cnt_str, str, expected_cnt, cnt);
 }
 END_TEST
 
@@ -422,7 +418,7 @@ START_TEST(test_find_alnum_ascii) {
     char const* p = find_alnum(str);
     ptrdiff_t expected_diff = 4;
     ptrdiff_t diff = p - str;
-    ck_assert_msg(diff == expected_diff, "Failed to find alnum char in string \"%s\": expected ptr diff to be %ld, got %ld", str, expected_diff, diff);   
+    ck_assert_msg(diff == expected_diff, "Failed to find alnum char in string \"%s\": expected ptr diff to be %ld, got %ld", str, expected_diff, diff);
 }
 END_TEST
 
@@ -431,7 +427,7 @@ START_TEST(test_find_alnum_num_only) {
     char const* p = find_alnum(str);
     ptrdiff_t expected_diff = 4;
     ptrdiff_t diff = p - str;
-    ck_assert_msg(diff == expected_diff, "Failed to find alnum char in string \"%s\": expected ptr diff to be %ld, got %ld", str, expected_diff, diff);   
+    ck_assert_msg(diff == expected_diff, "Failed to find alnum char in string \"%s\": expected ptr diff to be %ld, got %ld", str, expected_diff, diff);
 }
 END_TEST
 
@@ -440,7 +436,7 @@ START_TEST(test_find_alnum_utf_8) {
     char const* p = find_alnum(str);
     ptrdiff_t expected_diff = 4;
     ptrdiff_t diff = p - str;
-    ck_assert_msg(diff == expected_diff, "Failed to find alnum char in string \"%s\": expected ptr diff to be %ld, got %ld", str, expected_diff, diff);   
+    ck_assert_msg(diff == expected_diff, "Failed to find alnum char in string \"%s\": expected ptr diff to be %ld, got %ld", str, expected_diff, diff);
 }
 END_TEST
 
@@ -558,7 +554,7 @@ Suite* setup_strrev_suite() {
     tcase_add_test(strrev_broken_utf_8_string, test_strrev_broken_utf_8_string_return_2);
     tcase_add_test(strrev_broken_utf_8_string, test_strrev_broken_utf_8_string_return_3);
     tcase_add_test(strrev_broken_utf_8_string, test_strrev_broken_utf_8_string_return_4);
-    
+
     suite_add_tcase(s, strrev_valid_ascii_string);
     suite_add_tcase(s, strrev_valid_utf_8_string);
     suite_add_tcase(s, strrev_broken_utf_8_string);
@@ -669,7 +665,7 @@ Suite* setup_strnrep_suite() {
     suite_add_tcase(s, strnrep_rep_from_len_not_eq_rep_from_length);
     suite_add_tcase(s, strnrep_rep_to_len_not_eq_rep_to_length);
     suite_add_tcase(s, strnrep_num_not_eq_str_length);
-    
+
     return s;
 }
 
@@ -725,7 +721,7 @@ Suite* setup_strcmp_alnum_suite() {
     suite_add_tcase(s, strcmp_alnum_unequal);
     suite_add_tcase(s, strcmp_alnum_prefix);
     suite_add_tcase(s, strcmp_alnum_empty);
-    
+
     return s;
 }
 

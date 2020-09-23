@@ -22,7 +22,7 @@ size_t sanitize_buffer(char** buffer_ptr, size_t buffer_size) {
     return buffer_size;
 }
 
-size_t assign_lines(char*** lines_ptr, char* string_buffer, size_t string_buffer_size){
+size_t assign_lines(char*** lines_ptr, char* string_buffer, size_t string_buffer_size) {
     assert(lines_ptr);
     assert(string_buffer);
 

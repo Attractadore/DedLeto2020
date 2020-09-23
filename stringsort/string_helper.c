@@ -11,7 +11,7 @@ int strrev(char* s) {
 
     size_t s_len = strlen(s);
 
-    for (char* fore_p = s, *back_p = s + s_len - 1; fore_p < back_p; fore_p++, back_p--) {
+    for (char *fore_p = s, *back_p = s + s_len - 1; fore_p < back_p; fore_p++, back_p--) {
         swap(char, *fore_p, *back_p);
     }
 
