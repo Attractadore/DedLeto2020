@@ -3,19 +3,18 @@
  */
 #pragma once
 #include <stdio.h>
+#include <wchar.h>
 
-#define REVERSE_LINES_SUCCESS 0 /**< Symbolic parameter indicating that all lines were reversed successfully */
-#define REVERSE_LINES_ERROR -1  /**< Symbolic parameter indicating that an error occured while reversing lines */
-#define WRITE_LINES_SUCCESS 0   /**< Symbolic parameter indicating that all lines were write successfully */
-#define WRITE_LINES_ERROR -1    /**< Symbolic parameter indicating that an error occured while writing lines */
+#define WRITE_LINES_SUCCESS 0 /**< Symbolic parameter indicating that all lines were write successfully */
+#define WRITE_LINES_ERROR -1  /**< Symbolic parameter indicating that an error occured while writing lines */
 
 /**
  * This structure represents strings that have been stored in a buffer. Do not modify it directly
  */
 typedef struct _lines_s {
-    char** _lines;
+    wchar_t** _lines;
     size_t _num_lines;
-    char* _string_buffer;
+    wchar_t* _string_buffer;
     size_t _string_buffer_size;
 } LINES;
 
@@ -38,7 +37,7 @@ LINES* read_lines(FILE* input_file);
  *
  * \return #REVERSE_LINES_SUCCESS if no error occured, #REVERSE_LINES_ERROR otherwise
  */
-int reverse_lines(LINES* lines);
+void reverse_lines(LINES* lines);
 
 /**
  * \brief This functions writes the contents of a #LINES structure to a file

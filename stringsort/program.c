@@ -2,10 +2,13 @@
 #include "lines.h"
 
 #include <assert.h>
+#include <locale.h>
 
 int enc_sort(FILE* input_file, FILE* output_file) {
     assert(input_file);
     assert(output_file);
+
+    setlocale(LC_ALL, "");
 
     LINES* lines = read_lines(input_file);
     if (!lines) {
@@ -23,17 +26,15 @@ int rhy_sort(FILE* input_file, FILE* output_file) {
     assert(input_file);
     assert(output_file);
 
+    setlocale(LC_ALL, "");
+
     LINES* lines = read_lines(input_file);
     if (!lines) {
         return RHY_SORT_READ_ERROR;
     }
-    if (reverse_lines(lines) != REVERSE_LINES_SUCCESS) {
-        return RHY_SORT_REV_ERROR;
-    }
+    reverse_lines(lines);
     sort_lines(lines);
-    if (reverse_lines(lines) != REVERSE_LINES_SUCCESS) {
-        return RHY_SORT_REV_ERROR;
-    }
+    reverse_lines(lines);
     if (write_lines(lines, output_file) != WRITE_LINES_SUCCESS) {
         return RHY_SORT_WRITE_ERROR;
     }
