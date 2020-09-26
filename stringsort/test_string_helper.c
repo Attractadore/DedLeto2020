@@ -2,8 +2,8 @@
 
 #include <check.h>
 
-#include <stdlib.h>
 #include <locale.h>
+#include <stdlib.h>
 #include <wchar.h>
 
 START_TEST(test_wstrrev_non_pali_1) {
@@ -11,9 +11,8 @@ START_TEST(test_wstrrev_non_pali_1) {
     wchar_t const exp_wstr[] = L"dlrow olleH";
     wstrrev(src_wstr);
     ck_assert_msg(wcscmp(src_wstr, exp_wstr) == 0,
-            "Failed to reverse string: expected \"%ls\", got \"%ls\"",
-            exp_wstr, src_wstr
-    );
+                  "Failed to reverse string: expected \"%ls\", got \"%ls\"",
+                  exp_wstr, src_wstr);
 }
 END_TEST
 
@@ -22,9 +21,8 @@ START_TEST(test_wstrrev_non_pali_2) {
     wchar_t const exp_wstr[] = L"рим тевирП";
     wstrrev(src_wstr);
     ck_assert_msg(wcscmp(src_wstr, exp_wstr) == 0,
-            "Failed to reverse string: expected \"%ls\", got \"%ls\"",
-            exp_wstr, src_wstr
-    );
+                  "Failed to reverse string: expected \"%ls\", got \"%ls\"",
+                  exp_wstr, src_wstr);
 }
 END_TEST
 
@@ -33,10 +31,8 @@ START_TEST(test_wstrrev_non_pali_3) {
     wchar_t const exp_wstr[] = L"рим olleH";
     wstrrev(src_wstr);
     ck_assert_msg(wcscmp(src_wstr, exp_wstr) == 0,
-            "Failed to reverse string: expected \"%ls\", got \"%ls\"",
-            exp_wstr, src_wstr
-    );
-
+                  "Failed to reverse string: expected \"%ls\", got \"%ls\"",
+                  exp_wstr, src_wstr);
 }
 END_TEST
 
@@ -45,9 +41,8 @@ START_TEST(test_wstrrev_pali_1) {
     wchar_t const exp_wstr[] = L"enggne";
     wstrrev(src_wstr);
     ck_assert_msg(wcscmp(src_wstr, exp_wstr) == 0,
-            "Failed to reverse string: expected \"%ls\", got \"%ls\"",
-            exp_wstr, src_wstr
-    );
+                  "Failed to reverse string: expected \"%ls\", got \"%ls\"",
+                  exp_wstr, src_wstr);
 }
 END_TEST
 
@@ -56,9 +51,8 @@ START_TEST(test_wstrrev_pali_2) {
     wchar_t const exp_wstr[] = L"топот";
     wstrrev(src_wstr);
     ck_assert_msg(wcscmp(src_wstr, exp_wstr) == 0,
-            "Failed to reverse string: expected \"%ls\", got \"%ls\"",
-            exp_wstr, src_wstr
-    );
+                  "Failed to reverse string: expected \"%ls\", got \"%ls\"",
+                  exp_wstr, src_wstr);
 }
 END_TEST
 
@@ -67,9 +61,8 @@ START_TEST(test_wstrrev_pali_3) {
     wchar_t const exp_wstr[] = L"engтопотgne";
     wstrrev(src_wstr);
     ck_assert_msg(wcscmp(src_wstr, exp_wstr) == 0,
-            "Failed to reverse string: expected \"%ls\", got \"%ls\"",
-            exp_wstr, src_wstr
-    );
+                  "Failed to reverse string: expected \"%ls\", got \"%ls\"",
+                  exp_wstr, src_wstr);
 }
 END_TEST
 
@@ -78,9 +71,8 @@ START_TEST(test_wstrrev_empty) {
     wchar_t const exp_wstr[] = L"";
     wstrrev(src_wstr);
     ck_assert_msg(wcscmp(src_wstr, exp_wstr) == 0,
-            "Failed to reverse string: expected \"%ls\", got \"%ls\"",
-            exp_wstr, src_wstr
-    );
+                  "Failed to reverse string: expected \"%ls\", got \"%ls\"",
+                  exp_wstr, src_wstr);
 }
 END_TEST
 
