@@ -122,7 +122,7 @@ int write_lines(const LINES* lines, FILE* file) {
     assert(file);
 
     for (size_t i = 0; i < lines->_num_lines; i++) {
-        if (fwprintf(file, L"%ls\n", lines->_lines[i]) < 0) {
+        if (fprintf(file, "%ls\n", lines->_lines[i]) < 0) {
             return WRITE_LINES_ERROR;
         }
     }
