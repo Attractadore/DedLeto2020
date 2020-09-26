@@ -7,18 +7,17 @@
 #include <wchar.h>
 
 // If our input doesn't end with a new line, append one
-size_t sanitize_buffer(char** buffer_ptr, size_t buffer_size) {
-    assert(buffer_ptr);
-    assert(buffer_size);
+size_t sanitize_buffer(char** buffer_p, size_t buffer_size) {
+    assert(buffer_p);
 
-    if ((*buffer_ptr)[buffer_size - 1] != '\n') {
+    if (!buffer_size || (*buffer_p)[buffer_size - 1] != '\n') {
         buffer_size++;
-        char* new_buffer = realloc(*buffer_ptr, buffer_size);
+        char* new_buffer = realloc(*buffer_p, buffer_size);
         if (!new_buffer) {
             return 0;
         }
         new_buffer[buffer_size - 1] = '\n';
-        *buffer_ptr = new_buffer;
+        *buffer_p = new_buffer;
     }
     return buffer_size;
 }
@@ -67,7 +66,7 @@ LINES* read_lines(FILE* input_file) {
 
     char* sbuffer = NULL;
     size_t sbuffer_size = read_buffer(input_file, &sbuffer);
-    if (!sbuffer || !sbuffer_size) {
+    if (!sbuffer) {
         return NULL;
     }
 
@@ -97,8 +96,8 @@ LINES* read_lines(FILE* input_file) {
 
     LINES* lines_s = calloc(1, sizeof(*lines_s));
     if (!lines_s) {
-        free(wbuffer);
         free(lines);
+        free(wbuffer);
         return NULL;
     }
 
@@ -136,7 +135,7 @@ int qsort_wstrcmp(void const* left_value_p, void const* right_value_p) {
 
     wchar_t const* const* left_str_p = left_value_p;
     wchar_t const* const* right_str_p = right_value_p;
-    return wstrcmp_alnum(*left_str_p, *right_str_p);
+    return wstrcmp_alpha(*left_str_p, *right_str_p);
 }
 
 void sort_lines(LINES* lines) {

@@ -42,4 +42,4 @@ size_t wstrrep(wchar_t* wstr, wchar_t fwc, wchar_t twc);
  * \remark This function considers an empty wide string to be greater than any other wide string,
  *         and a prefix wide string to be greater than any wide string it is a prefix of
  */
-int wstrcmp_alnum(wchar_t const* left_wstr, wchar_t const* right_wstr);
+int wstrcmp_alpha(wchar_t const* left_wstr, wchar_t const* right_wstr);

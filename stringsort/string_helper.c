@@ -37,28 +37,28 @@ size_t wstrrep(wchar_t* wstr, wchar_t fwc, wchar_t twc) {
     return rep;
 }
 
-wchar_t const* find_alnum(wchar_t const* wstr) {
+wchar_t const* find_alpha(wchar_t const* wstr) {
     assert(wstr);
 
-    while (*wstr && !iswalnum(*wstr)) {
+    while (*wstr && !iswalpha(*wstr)) {
         wstr++;
     }
     return wstr;
 }
 
-int wstrcmp_alnum(wchar_t const* left_wstr, wchar_t const* right_wstr) {
+int wstrcmp_alpha(wchar_t const* left_wstr, wchar_t const* right_wstr) {
     assert(left_wstr);
     assert(right_wstr);
 
-    do {
-        left_wstr = find_alnum(left_wstr);
-        right_wstr = find_alnum(right_wstr);
-        wchar_t lwc = towlower(*(left_wstr));
-        wchar_t rwc = towlower(*(right_wstr));
+    while ((left_wstr = find_alpha(left_wstr)) &&
+           (right_wstr = find_alpha(right_wstr)) &&
+           *left_wstr && *right_wstr) {
+        wchar_t lwc = towlower(*(left_wstr++));
+        wchar_t rwc = towlower(*(right_wstr++));
         if (lwc != rwc) {
             return lwc - rwc;
         }
-    } while (*left_wstr && *right_wstr && left_wstr++ && right_wstr++);
+    }
 
     if (!*left_wstr && *right_wstr) {
         return 1;
