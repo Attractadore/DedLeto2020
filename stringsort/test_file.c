@@ -126,7 +126,7 @@ Suite* setup_open_file_suite() {
     tcase_add_test(open_file_case_stdout, test_open_file_stdout_ab);
     TCase* open_file_case_stdout_invalid_mode = tcase_create("open_file on stdout invalid mode");
     tcase_add_test(open_file_case_stdout_invalid_mode, test_open_file_stdout_invalid_mode);
-    
+
     TCase* open_file_case_stderr = tcase_create("open_file on stderr valid mode");
     tcase_add_test(open_file_case_stderr, test_open_file_stderr_w);
     tcase_add_test(open_file_case_stderr, test_open_file_stderr_wb);
@@ -143,7 +143,7 @@ Suite* setup_open_file_suite() {
 
     suite_add_tcase(s, open_file_case_stderr);
     suite_add_tcase(s, open_file_case_stderr_invalid_mode);
-    
+
     return s;
 }
 
