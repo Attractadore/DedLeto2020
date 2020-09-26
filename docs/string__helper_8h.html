@@ -68,21 +68,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a6d97b19dea9473d857c06562603750cc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#a6d97b19dea9473d857c06562603750cc">wstrrep</a> (wchar_t *wstr, wchar_t fwc, wchar_t twc)</td></tr>
 <tr class="memdesc:a6d97b19dea9473d857c06562603750cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function replaces all occurances of one wide character in a wide string with another.  <a href="string__helper_8h.html#a6d97b19dea9473d857c06562603750cc">More...</a><br /></td></tr>
 <tr class="separator:a6d97b19dea9473d857c06562603750cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2040ad5953b955667e7bf9c18e19aefa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#a2040ad5953b955667e7bf9c18e19aefa">wstrcmp_alnum</a> (wchar_t const *left_wstr, wchar_t const *right_wstr)</td></tr>
-<tr class="memdesc:a2040ad5953b955667e7bf9c18e19aefa"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function compares two wide strings ignoring non-alnum wide characters.  <a href="string__helper_8h.html#a2040ad5953b955667e7bf9c18e19aefa">More...</a><br /></td></tr>
-<tr class="separator:a2040ad5953b955667e7bf9c18e19aefa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0120a8075b5b92f404388b487e658ce0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#a0120a8075b5b92f404388b487e658ce0">wstrcmp_alpha</a> (wchar_t const *left_wstr, wchar_t const *right_wstr)</td></tr>
+<tr class="memdesc:a0120a8075b5b92f404388b487e658ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function compares two wide strings ignoring non-alnum wide characters.  <a href="string__helper_8h.html#a0120a8075b5b92f404388b487e658ce0">More...</a><br /></td></tr>
+<tr class="separator:a0120a8075b5b92f404388b487e658ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file defines helper function for working with strings and characters </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a2040ad5953b955667e7bf9c18e19aefa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2040ad5953b955667e7bf9c18e19aefa">&#9670;&nbsp;</a></span>wstrcmp_alnum()</h2>
+<a id="a0120a8075b5b92f404388b487e658ce0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0120a8075b5b92f404388b487e658ce0">&#9670;&nbsp;</a></span>wstrcmp_alpha()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int wstrcmp_alnum </td>
+          <td class="memname">int wstrcmp_alpha </td>
           <td>(</td>
           <td class="paramtype">wchar_t const *&#160;</td>
           <td class="paramname"><em>left_wstr</em>, </td>
@@ -148,6 +148,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of occurances of <code>wc</code> in <code>wstr</code> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd><code>wc</code> must not be <code>'\0'</code> </dd></dl>
 
 </div>
 </div>
@@ -192,7 +193,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of replacements made </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of replacements made</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd><code>fwc</code> must not be <code>'\0'</code> </dd></dl>
 
 </div>
 </div>
