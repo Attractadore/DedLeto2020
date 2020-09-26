@@ -34,8 +34,6 @@ LINES* read_lines(FILE* input_file);
  * \brief This function reverses the contents of a #LINES structure without changing their order
  *
  * \param[in] lines The #LINES structure whose contents this this function will operate on
- *
- * \return #REVERSE_LINES_SUCCESS if no error occured, #REVERSE_LINES_ERROR otherwise
  */
 void reverse_lines(LINES* lines);
 
