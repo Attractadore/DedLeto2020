@@ -9,14 +9,16 @@
 void wstrrev(wchar_t* wstr) {
     assert(wstr);
 
-    size_t len = wcslen(wstr);
-    for (wchar_t *fore_p = wstr, *back_p = wstr + len - 1; fore_p < back_p; fore_p++, back_p--) {
+    for (wchar_t *fore_p = wstr, *back_p = wcschr(wstr, L'\0') - 1;
+         fore_p < back_p;
+         fore_p++, back_p--) {
         swap(wchar_t, *fore_p, *back_p);
     }
 }
 
 size_t wstrcnt(wchar_t const* wstr, wchar_t wc) {
     assert(wstr);
+    assert(wc);
 
     size_t cnt = 0;
     while ((wstr = wcschr(wstr, wc))) {
@@ -28,6 +30,7 @@ size_t wstrcnt(wchar_t const* wstr, wchar_t wc) {
 
 size_t wstrrep(wchar_t* wstr, wchar_t fwc, wchar_t twc) {
     assert(wstr);
+    assert(fwc);
 
     size_t rep = 0;
     while ((wstr = wcschr(wstr, fwc))) {

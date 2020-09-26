@@ -18,6 +18,8 @@ void wstrrev(wchar_t* wstr);
  * \param[in] wc The wide character whose number of occurances to count
  *
  * \return The number of occurances of \c wc in \c wstr
+ *
+ * \remark \c wc must not be \c '\0'
  */
 size_t wstrcnt(wchar_t const* wstr, wchar_t wc);
 
@@ -29,6 +31,8 @@ size_t wstrcnt(wchar_t const* wstr, wchar_t wc);
  * \param[in] twc The wide character to replace with
  *
  * \return The number of replacements made
+ *
+ * \remark \c fwc must not be \c '\0'
  */
 size_t wstrrep(wchar_t* wstr, wchar_t fwc, wchar_t twc);
 
@@ -37,7 +41,7 @@ size_t wstrrep(wchar_t* wstr, wchar_t fwc, wchar_t twc);
  *
  * \param[in] left_wstr, right_wstr The wide strings this function will compare
  *
-  \return < 0 if left_wstr < right_wstr, 0 if left_wstr == right_wstr, > 0 if left_wstr > right_wstr
+ * \return < 0 if left_wstr < right_wstr, 0 if left_wstr == right_wstr, > 0 if left_wstr > right_wstr
  *
  * \remark This function considers an empty wide string to be greater than any other wide string,
  *         and a prefix wide string to be greater than any wide string it is a prefix of
