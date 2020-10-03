@@ -14,7 +14,7 @@ int enc_sort(FILE* input_file, FILE* output_file) {
     if (!lines) {
         return ENC_SORT_READ_ERROR;
     }
-    sort_lines(lines);
+    sort_lines(lines, qsort_cmp);
     if (write_lines(lines, output_file) != WRITE_LINES_SUCCESS) {
         return ENC_SORT_WRITE_ERROR;
     }
@@ -32,9 +32,7 @@ int rhy_sort(FILE* input_file, FILE* output_file) {
     if (!lines) {
         return RHY_SORT_READ_ERROR;
     }
-    reverse_lines(lines);
-    sort_lines(lines);
-    reverse_lines(lines);
+    sort_lines(lines, qsort_cmp_reverse);
     if (write_lines(lines, output_file) != WRITE_LINES_SUCCESS) {
         return RHY_SORT_WRITE_ERROR;
     }

@@ -6,16 +6,6 @@
 #include <wchar.h>
 #include <wctype.h>
 
-void wstrrev(wchar_t* wstr) {
-    assert(wstr);
-
-    for (wchar_t *fore_p = wstr, *back_p = wcschr(wstr, L'\0') - 1;
-         fore_p < back_p;
-         fore_p++, back_p--) {
-        swap(wchar_t, *fore_p, *back_p);
-    }
-}
-
 size_t wstrcnt(wchar_t const* wstr, wchar_t wc) {
     assert(wstr);
     assert(wc);
@@ -28,45 +18,63 @@ size_t wstrcnt(wchar_t const* wstr, wchar_t wc) {
     return cnt;
 }
 
-size_t wstrrep(wchar_t* wstr, wchar_t fwc, wchar_t twc) {
-    assert(wstr);
-    assert(fwc);
+wchar_t const* find_alpha(wchar_t const* start, wchar_t const* end, ptrdiff_t step) {
+    assert(start);
+    assert(end);
+    assert(step != 0);
 
-    size_t rep = 0;
-    while ((wstr = wcschr(wstr, fwc))) {
-        *(wstr++) = twc;
-        rep++;
+    step /= labs(step);
+
+    while (start != end && !iswalpha(*start)) {
+        start += step;
     }
-    return rep;
+    return start;
 }
 
-wchar_t const* find_alpha(wchar_t const* wstr) {
-    assert(wstr);
+int wstrcmp_alpha(wide_string const* left_wide_string, wide_string const* right_wide_string, ptrdiff_t step) {
+    assert(left_wide_string);
+    assert(right_wide_string);
+    assert(left_wide_string->str);
+    assert(right_wide_string->str);
 
-    while (*wstr && !iswalpha(*wstr)) {
-        wstr++;
+    if (step == 0) {
+        return 0;
     }
-    return wstr;
-}
+    step /= labs(step);
 
-int wstrcmp_alpha(wchar_t const* left_wstr, wchar_t const* right_wstr) {
-    assert(left_wstr);
-    assert(right_wstr);
+    wchar_t const* left_wstr_start = NULL;
+    wchar_t const* left_wstr_end = NULL;
+    wchar_t const* right_wstr_start = NULL;
+    wchar_t const* right_wstr_end = NULL;
+    if (step > 0) {
+        left_wstr_start = left_wide_string->str;
+        left_wstr_end = left_wide_string->str + left_wide_string->len;
+        right_wstr_start = right_wide_string->str;
+        right_wstr_end = right_wide_string->str + right_wide_string->len;
+    } else {
+        left_wstr_start = left_wide_string->str + left_wide_string->len - 1;
+        left_wstr_end = left_wide_string->str - 1;
+        right_wstr_start = right_wide_string->str + right_wide_string->len - 1;
+        right_wstr_end = right_wide_string->str - 1;
+    }
 
-    while ((left_wstr = find_alpha(left_wstr)) &&
-           (right_wstr = find_alpha(right_wstr)) &&
-           *left_wstr && *right_wstr) {
-        wchar_t lwc = towlower(*(left_wstr++));
-        wchar_t rwc = towlower(*(right_wstr++));
+    while ((left_wstr_start = find_alpha(left_wstr_start, left_wstr_end, step)) &&
+           (right_wstr_start = find_alpha(right_wstr_start, right_wstr_end, step)) &&
+           left_wstr_start != left_wstr_end &&
+           right_wstr_start != right_wstr_end) {
+        wchar_t lwc = towlower(*left_wstr_start);
+        wchar_t rwc = towlower(*right_wstr_start);
         if (lwc != rwc) {
             return lwc - rwc;
         }
+        left_wstr_start += step;
+        right_wstr_start += step;
     }
 
-    if (!*left_wstr && *right_wstr) {
+    if (left_wstr_start == left_wstr_end && right_wstr_start != right_wstr_end) {
         return 1;
     }
-    if (*left_wstr && !*right_wstr) {
+    if (left_wstr_start != left_wstr_end && right_wstr_start == right_wstr_end) {
         return -1;
     }
     return 0;

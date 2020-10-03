@@ -11,12 +11,8 @@
 /**
  * This structure represents strings that have been stored in a buffer. Do not modify it directly
  */
-typedef struct _lines_s {
-    wchar_t** _lines;
-    size_t _num_lines;
-    wchar_t* _string_buffer;
-    size_t _string_buffer_size;
-} LINES;
+typedef struct _lines_s LINES;
+typedef int (*comparator)(void const*, void const*);
 
 /**
  * \brief This function reads lines and stores them in a #LINES structure
@@ -42,7 +38,7 @@ void reverse_lines(LINES* lines);
  *
  * \param[in] lines The #LINES structure whose contents that this function will write
  * \param[in] file The file to which the lines will be written 
- *
+ * 
  * \return #WRITE_LINES_SUCCESS if no error occured, #WRITE_LINES_ERROR otherwise
  */
 int write_lines(const LINES* lines, FILE* file);
@@ -51,8 +47,9 @@ int write_lines(const LINES* lines, FILE* file);
  * \brief This function sorts the contents of a #LINES structure
  *
  * \param[in, out] lines The #LINES structure whose contents will be sorted by this function
+ * \param[in] comp The comparison function to use
  */
-void sort_lines(LINES* lines);
+void sort_lines(LINES* lines, comparator comp);
 
 /**
  * \brief This function frees the #LINES structure returned by #read_lines
@@ -60,3 +57,13 @@ void sort_lines(LINES* lines);
  * \param[out] lines The #LINES structure that this function will operate on
  */
 void free_lines(LINES* lines);
+
+/**
+ * \brief This function can be used as a parameter to #sort_lines when sorting strings left to right
+ */
+int qsort_cmp(void const* left_value_p, void const* right_value_p);
+
+/**
+ * \brief This function can be used as a parameter to #sort_lines when sorting strings right to left
+ */
+int qsort_cmp_reverse(void const* left_value_p, void const* right_value_p);

@@ -6,6 +6,14 @@
 #include <stdlib.h>
 #include <wchar.h>
 
+struct _lines_s {
+    wide_string** _lines;
+    wide_string* _lines_buffer;
+    size_t _num_lines;
+    wchar_t* _string_buffer;
+    size_t _string_buffer_size;
+};
+
 // If our input doesn't end with a new line, append one
 size_t sanitize_buffer(char** buffer_p, size_t buffer_size) {
     assert(buffer_p);
@@ -36,14 +44,23 @@ size_t convert_buffer(wchar_t** wbuffer_p, char const* sbuffer) {
     return wbuffer_size;
 }
 
-size_t assign_lines(wchar_t*** lines_p, wchar_t* wbuffer, size_t wbuffer_size) {
+size_t assign_lines(wide_string*** lines_p, wide_string** lines_buffer_p, wchar_t* wbuffer, size_t wbuffer_size) {
     assert(lines_p);
     assert(wbuffer);
 
     size_t lines_buffer_size = wstrcnt(wbuffer, L'\n') + 1;
-    wchar_t** lines = calloc(lines_buffer_size, sizeof(*lines));
+
+    wide_string* lines_buffer = calloc(lines_buffer_size, sizeof(*lines_buffer));
+    *lines_buffer_p = lines_buffer;
+    if (!lines_buffer) {
+        return 0;
+    }
+
+    wide_string** lines = calloc(lines_buffer_size, sizeof(*lines));
     *lines_p = lines;
     if (!lines) {
+        *lines_buffer_p = NULL;
+        free(lines_buffer);
         return 0;
     }
 
@@ -51,7 +68,11 @@ size_t assign_lines(wchar_t*** lines_p, wchar_t* wbuffer, size_t wbuffer_size) {
     wchar_t p = L'\n';
     for (size_t i = 0; i < wbuffer_size; i++) {
         if (p == L'\n') {
-            lines[num_read_lines++] = wbuffer + i;
+            lines_buffer[num_read_lines].str = wbuffer + i;
+            lines[num_read_lines] = lines_buffer + num_read_lines;
+            num_read_lines++;
+        } else {
+            lines_buffer[num_read_lines - 1].len++;
         }
         p = wbuffer[i];
     }
@@ -84,15 +105,13 @@ LINES* read_lines(FILE* input_file) {
         return NULL;
     }
 
-    wchar_t** lines = NULL;
-    size_t num_read_lines = assign_lines(&lines, wbuffer, wbuffer_size);
-    if (!lines) {
+    wide_string** lines = NULL;
+    wide_string* lines_buffer = NULL;
+    size_t num_read_lines = assign_lines(&lines, &lines_buffer, wbuffer, wbuffer_size);
+    if (!lines_buffer || !lines) {
         free(wbuffer);
         return NULL;
     }
-
-    size_t num_rep = wstrrep(wbuffer, L'\n', L'\0');
-    assert(num_rep + 1 == num_read_lines);
 
     LINES* lines_s = calloc(1, sizeof(*lines_s));
     if (!lines_s) {
@@ -104,44 +123,52 @@ LINES* read_lines(FILE* input_file) {
     lines_s->_string_buffer = wbuffer;
     lines_s->_string_buffer_size = wbuffer_size;
     lines_s->_lines = lines;
+    lines_s->_lines_buffer = lines_buffer;
     lines_s->_num_lines = num_read_lines;
 
     return lines_s;
-}
-
-void reverse_lines(LINES* lines) {
-    assert(lines);
-
-    for (size_t i = 0; i < lines->_num_lines; i++) {
-        wstrrev(lines->_lines[i]);
-    }
 }
 
 int write_lines(const LINES* lines, FILE* file) {
     assert(lines);
     assert(file);
 
+    wchar_t* p = lines->_string_buffer;
+    while ((p = wcschr(p, L'\n'))) {
+        *(p++) = L'\0';
+    }
+
     for (size_t i = 0; i < lines->_num_lines; i++) {
-        if (fprintf(file, "%ls\n", lines->_lines[i]) < 0) {
-            return WRITE_LINES_ERROR;
-        }
+        fprintf(file, "%ls\n", lines->_lines[i]->str);
     }
     return WRITE_LINES_SUCCESS;
 }
 
-int qsort_wstrcmp(void const* left_value_p, void const* right_value_p) {
+int qsort_cmp(void const* left_value_p, void const* right_value_p) {
     assert(left_value_p);
     assert(right_value_p);
 
-    wchar_t const* const* left_str_p = left_value_p;
-    wchar_t const* const* right_str_p = right_value_p;
-    return wstrcmp_alpha(*left_str_p, *right_str_p);
+    wide_string const* const* left_wide_string_p = left_value_p;
+    wide_string const* const* right_wide_string_p = right_value_p;
+
+    return wstrcmp_alpha(*left_wide_string_p, *right_wide_string_p, 1);
 }
 
-void sort_lines(LINES* lines) {
-    assert(lines);
+int qsort_cmp_reverse(void const* left_value_p, void const* right_value_p) {
+    assert(left_value_p);
+    assert(right_value_p);
 
-    qsort(lines->_lines, lines->_num_lines, sizeof(*(lines->_lines)), qsort_wstrcmp);
+    wide_string const* const* left_wide_string_p = left_value_p;
+    wide_string const* const* right_wide_string_p = right_value_p;
+
+    return wstrcmp_alpha(*left_wide_string_p, *right_wide_string_p, -1);
+}
+
+void sort_lines(LINES* lines, comparator comp) {
+    assert(lines);
+    assert(comp);
+
+    qsort(lines->_lines, lines->_num_lines, sizeof(*(lines->_lines)), comp);
 }
 
 void free_lines(LINES* lines) {
