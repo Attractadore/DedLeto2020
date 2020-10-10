@@ -1,5 +1,5 @@
 /**
- * \file lines.c This file contains functions for accessing the program's core functionality
+ * \file lines.h This file contains functions for accessing the program's core functionality
  */
 #pragma once
 

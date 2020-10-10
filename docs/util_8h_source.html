@@ -54,19 +54,32 @@
 <a href="util_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="util_8h.html#aec59bb64d89422aa8466fe18e148f1d7">   15</a></span>&#160;<span class="preprocessor">#define swap(t, a, b) \</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">    {                 \</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">        t tmp = a;    \</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">        a = b;        \</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">        b = tmp;      \</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">    }</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="util_8h.html#a5275648a0b9ea742d39dec7557da97c5">read_buffer</a>(FILE* input_file, <span class="keywordtype">char</span>** buf_p);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">typedef</span> int (*comparator)(<span class="keywordtype">void</span> <span class="keyword">const</span>*, <span class="keywordtype">void</span> <span class="keyword">const</span>*);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">typedef</span> void (*sorter)(<span class="keywordtype">void</span>*, size_t, size_t, comparator);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="util_8h.html#aec59bb64d89422aa8466fe18e148f1d7">   19</a></span>&#160;<span class="preprocessor">#define swap(t, a, b) \</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">    do {              \</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">        t tmp = a;    \</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">        a = b;        \</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">        b = tmp;      \</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">    } while (0)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a17cd7d6dfce065e21f2d1409bba1c705">memswap</a>(<span class="keywordtype">void</span>* a, <span class="keywordtype">void</span>* b, <span class="keywordtype">size_t</span> num);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="util_8h.html#a5275648a0b9ea742d39dec7557da97c5">read_buffer</a>(FILE* input_file, <span class="keywordtype">char</span>** buf_p);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#a2409a25f872f51dcd9dbec8baeb36815">is_sorted</a>(<span class="keywordtype">void</span> <span class="keyword">const</span>* arr, <span class="keywordtype">size_t</span> num, <span class="keywordtype">size_t</span> sz, comparator comp);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a8c70765a64a868b7c16b5c46ac8611e7">quick_sort</a>(<span class="keywordtype">void</span>* arr, <span class="keywordtype">size_t</span> num, <span class="keywordtype">size_t</span> sz, comparator comp);</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="autil_8h_html_a5275648a0b9ea742d39dec7557da97c5"><div class="ttname"><a href="util_8h.html#a5275648a0b9ea742d39dec7557da97c5">read_buffer</a></div><div class="ttdeci">size_t read_buffer(FILE *input_file, char **buf_p)</div><div class="ttdoc">This function reads all of a file's contents into a buffer.</div><div class="ttdef"><b>Definition:</b> util.c:102</div></div>
+<div class="ttc" id="autil_8h_html_a8c70765a64a868b7c16b5c46ac8611e7"><div class="ttname"><a href="util_8h.html#a8c70765a64a868b7c16b5c46ac8611e7">quick_sort</a></div><div class="ttdeci">void quick_sort(void *arr, size_t num, size_t sz, comparator comp)</div><div class="ttdoc">This function sorts an array using the quicksort algorithm.</div><div class="ttdef"><b>Definition:</b> util.c:172</div></div>
+<div class="ttc" id="autil_8h_html_a17cd7d6dfce065e21f2d1409bba1c705"><div class="ttname"><a href="util_8h.html#a17cd7d6dfce065e21f2d1409bba1c705">memswap</a></div><div class="ttdeci">void memswap(void *a, void *b, size_t num)</div><div class="ttdoc">This functions swaps the contents of two areas of memory.</div><div class="ttdef"><b>Definition:</b> util.c:10</div></div>
+<div class="ttc" id="autil_8h_html_a5275648a0b9ea742d39dec7557da97c5"><div class="ttname"><a href="util_8h.html#a5275648a0b9ea742d39dec7557da97c5">read_buffer</a></div><div class="ttdeci">size_t read_buffer(FILE *input_file, char **buf_p)</div><div class="ttdoc">This function reads all of a file's contents into a buffer.</div><div class="ttdef"><b>Definition:</b> util.c:125</div></div>
+<div class="ttc" id="autil_8h_html_a2409a25f872f51dcd9dbec8baeb36815"><div class="ttname"><a href="util_8h.html#a2409a25f872f51dcd9dbec8baeb36815">is_sorted</a></div><div class="ttdeci">bool is_sorted(void const *arr, size_t num, size_t sz, comparator comp)</div><div class="ttdoc">This function checks if an array is sorted based on some critertion.</div><div class="ttdef"><b>Definition:</b> util.c:139</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

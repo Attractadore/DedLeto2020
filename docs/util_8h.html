@@ -49,12 +49,14 @@
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">util.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 </div>
 <p><a href="util_8h_source.html">Go to the source code of this file.</a></p>
@@ -65,11 +67,29 @@ Macros</h2></td></tr>
 <tr class="memdesc:aec59bb64d89422aa8466fe18e148f1d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps a and b.  <a href="util_8h.html#aec59bb64d89422aa8466fe18e148f1d7">More...</a><br /></td></tr>
 <tr class="separator:aec59bb64d89422aa8466fe18e148f1d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a81395985f24332c26b7beb5994860946"><td class="memItemLeft" align="right" valign="top"><a id="a81395985f24332c26b7beb5994860946"></a>
+typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>comparator</b>) (void const *, void const *)</td></tr>
+<tr class="separator:a81395985f24332c26b7beb5994860946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5ea322691344c169f82454bd685675"><td class="memItemLeft" align="right" valign="top"><a id="a3f5ea322691344c169f82454bd685675"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>sorter</b>) (void *, size_t, size_t, comparator)</td></tr>
+<tr class="separator:a3f5ea322691344c169f82454bd685675"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a17cd7d6dfce065e21f2d1409bba1c705"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a17cd7d6dfce065e21f2d1409bba1c705">memswap</a> (void *a, void *b, size_t num)</td></tr>
+<tr class="memdesc:a17cd7d6dfce065e21f2d1409bba1c705"><td class="mdescLeft">&#160;</td><td class="mdescRight">This functions swaps the contents of two areas of memory.  <a href="util_8h.html#a17cd7d6dfce065e21f2d1409bba1c705">More...</a><br /></td></tr>
+<tr class="separator:a17cd7d6dfce065e21f2d1409bba1c705"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5275648a0b9ea742d39dec7557da97c5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a5275648a0b9ea742d39dec7557da97c5">read_buffer</a> (FILE *input_file, char **buf_p)</td></tr>
 <tr class="memdesc:a5275648a0b9ea742d39dec7557da97c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reads all of a file's contents into a buffer.  <a href="util_8h.html#a5275648a0b9ea742d39dec7557da97c5">More...</a><br /></td></tr>
 <tr class="separator:a5275648a0b9ea742d39dec7557da97c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2409a25f872f51dcd9dbec8baeb36815"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a2409a25f872f51dcd9dbec8baeb36815">is_sorted</a> (void const *arr, size_t num, size_t sz, comparator comp)</td></tr>
+<tr class="memdesc:a2409a25f872f51dcd9dbec8baeb36815"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function checks if an array is sorted based on some critertion.  <a href="util_8h.html#a2409a25f872f51dcd9dbec8baeb36815">More...</a><br /></td></tr>
+<tr class="separator:a2409a25f872f51dcd9dbec8baeb36815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c70765a64a868b7c16b5c46ac8611e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a8c70765a64a868b7c16b5c46ac8611e7">quick_sort</a> (void *arr, size_t num, size_t sz, comparator comp)</td></tr>
+<tr class="memdesc:a8c70765a64a868b7c16b5c46ac8611e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function sorts an array using the quicksort algorithm.  <a href="util_8h.html#a8c70765a64a868b7c16b5c46ac8611e7">More...</a><br /></td></tr>
+<tr class="separator:a8c70765a64a868b7c16b5c46ac8611e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file defines various utility functions </p>
@@ -105,11 +125,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    {                 \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {              \</div>
 <div class="line">        t tmp = a;    \</div>
 <div class="line">        a = b;        \</div>
 <div class="line">        b = tmp;      \</div>
-<div class="line">    }</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p>Swaps a and b. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -123,6 +143,153 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a2409a25f872f51dcd9dbec8baeb36815"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2409a25f872f51dcd9dbec8baeb36815">&#9670;&nbsp;</a></span>is_sorted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool is_sorted </td>
+          <td>(</td>
+          <td class="paramtype">void const *&#160;</td>
+          <td class="paramname"><em>arr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">comparator&#160;</td>
+          <td class="paramname"><em>comp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function checks if an array is sorted based on some critertion. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">arr</td><td>The array to check </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>The number of elements in the array </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sz</td><td>The size of each of the array's elements </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">comp</td><td>The function to use to compare elements</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if the array if not sorted, not 0 otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a17cd7d6dfce065e21f2d1409bba1c705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17cd7d6dfce065e21f2d1409bba1c705">&#9670;&nbsp;</a></span>memswap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void memswap </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This functions swaps the contents of two areas of memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">a,b</td><td>The pointers to the blocks of memory whose contents will be swapped </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>The size of the blocks of memory whose contents will be swapped</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Behaviour is undefined if <code>a</code> and <code>b</code> overlap </dd></dl>
+
+</div>
+</div>
+<a id="a8c70765a64a868b7c16b5c46ac8611e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c70765a64a868b7c16b5c46ac8611e7">&#9670;&nbsp;</a></span>quick_sort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quick_sort </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">comparator&#160;</td>
+          <td class="paramname"><em>comp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function sorts an array using the quicksort algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">arr</td><td>The array to sort </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>The number of elements in the array </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sz</td><td>The size of each of the array's elements </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">comp</td><td>The function to use to compare elements </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a5275648a0b9ea742d39dec7557da97c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5275648a0b9ea742d39dec7557da97c5">&#9670;&nbsp;</a></span>read_buffer()</h2>
 

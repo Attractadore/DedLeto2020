@@ -29,7 +29,7 @@ typedef void (*sorter)(void*, size_t, size_t, comparator);
  * \param[in, out] a, b The pointers to the blocks of memory whose contents will be swapped
  * \param[in] num The size of the blocks of memory whose contents will be swapped
  *
- * \remark Behaviour is undefined if \c a and \b overlap
+ * \remark Behaviour is undefined if \c a and \c b overlap
  */
 void memswap(void* a, void* b, size_t num);
 

@@ -48,6 +48,7 @@
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">string_helper.h File Reference</div>  </div>
@@ -57,41 +58,43 @@
 </div>
 <p><a href="string__helper_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwide__string.html">wide_string</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5a506b783f1ce5b112e68f4d255facf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#a5a506b783f1ce5b112e68f4d255facf7">wstrrev</a> (wchar_t *wstr)</td></tr>
-<tr class="memdesc:a5a506b783f1ce5b112e68f4d255facf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reverses a wide string in-place.  <a href="string__helper_8h.html#a5a506b783f1ce5b112e68f4d255facf7">More...</a><br /></td></tr>
-<tr class="separator:a5a506b783f1ce5b112e68f4d255facf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c6d23ea64de8fbefc6fc30d67acc4e9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#a6c6d23ea64de8fbefc6fc30d67acc4e9">wstrcnt</a> (wchar_t const *wstr, wchar_t wc)</td></tr>
 <tr class="memdesc:a6c6d23ea64de8fbefc6fc30d67acc4e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function counts how many times a wide character occurs in a wide string.  <a href="string__helper_8h.html#a6c6d23ea64de8fbefc6fc30d67acc4e9">More...</a><br /></td></tr>
 <tr class="separator:a6c6d23ea64de8fbefc6fc30d67acc4e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d97b19dea9473d857c06562603750cc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#a6d97b19dea9473d857c06562603750cc">wstrrep</a> (wchar_t *wstr, wchar_t fwc, wchar_t twc)</td></tr>
-<tr class="memdesc:a6d97b19dea9473d857c06562603750cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function replaces all occurances of one wide character in a wide string with another.  <a href="string__helper_8h.html#a6d97b19dea9473d857c06562603750cc">More...</a><br /></td></tr>
-<tr class="separator:a6d97b19dea9473d857c06562603750cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0120a8075b5b92f404388b487e658ce0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#a0120a8075b5b92f404388b487e658ce0">wstrcmp_alpha</a> (wchar_t const *left_wstr, wchar_t const *right_wstr)</td></tr>
-<tr class="memdesc:a0120a8075b5b92f404388b487e658ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function compares two wide strings ignoring non-alnum wide characters.  <a href="string__helper_8h.html#a0120a8075b5b92f404388b487e658ce0">More...</a><br /></td></tr>
-<tr class="separator:a0120a8075b5b92f404388b487e658ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa955b745f74c708cb163e872acf408ec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#aa955b745f74c708cb163e872acf408ec">wstrcmp_alpha_fow</a> (<a class="el" href="structwide__string.html">wide_string</a> const *left_wide_string, <a class="el" href="structwide__string.html">wide_string</a> const *right_wide_string)</td></tr>
+<tr class="memdesc:aa955b745f74c708cb163e872acf408ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function compares two wide strings left to right ignoring non-alpha wide characters.  <a href="string__helper_8h.html#aa955b745f74c708cb163e872acf408ec">More...</a><br /></td></tr>
+<tr class="separator:aa955b745f74c708cb163e872acf408ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77b68d3e54db8e58b0c911be0b691a53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__helper_8h.html#a77b68d3e54db8e58b0c911be0b691a53">wstrcmp_alpha_rev</a> (<a class="el" href="structwide__string.html">wide_string</a> const *left_wide_string, <a class="el" href="structwide__string.html">wide_string</a> const *right_wide_string)</td></tr>
+<tr class="memdesc:a77b68d3e54db8e58b0c911be0b691a53"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function compares two wide strings left to right ignoring non-alpha wide characters.  <a href="string__helper_8h.html#a77b68d3e54db8e58b0c911be0b691a53">More...</a><br /></td></tr>
+<tr class="separator:a77b68d3e54db8e58b0c911be0b691a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file defines helper function for working with strings and characters </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a0120a8075b5b92f404388b487e658ce0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0120a8075b5b92f404388b487e658ce0">&#9670;&nbsp;</a></span>wstrcmp_alpha()</h2>
+<a id="aa955b745f74c708cb163e872acf408ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa955b745f74c708cb163e872acf408ec">&#9670;&nbsp;</a></span>wstrcmp_alpha_fow()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int wstrcmp_alpha </td>
+          <td class="memname">int wstrcmp_alpha_fow </td>
           <td>(</td>
-          <td class="paramtype">wchar_t const *&#160;</td>
-          <td class="paramname"><em>left_wstr</em>, </td>
+          <td class="paramtype"><a class="el" href="structwide__string.html">wide_string</a> const *&#160;</td>
+          <td class="paramname"><em>left_wide_string</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">wchar_t const *&#160;</td>
-          <td class="paramname"><em>right_wstr</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structwide__string.html">wide_string</a> const *&#160;</td>
+          <td class="paramname"><em>right_wide_string</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -101,15 +104,51 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function compares two wide strings ignoring non-alnum wide characters. </p>
+<p>This function compares two wide strings left to right ignoring non-alpha wide characters. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">left_wstr,right_wstr</td><td>The wide strings this function will compare</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">left_wide_string,right_wide_string</td><td>The wide strings this function will compare</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>&lt; 0 if left_wstr &lt; right_wstr, 0 if left_wstr == right_wstr, &gt; 0 if left_wstr &gt; right_wstr</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This function considers an empty wide string to be greater than any other wide string, and a prefix wide string to be greater than any wide string it is a prefix of </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>&lt; 0 if left_wstr &lt; right_wstr, 0 if left_wstr == right_wstr, &gt; 0 if left_wstr &gt; right_wstr </dd></dl>
+
+</div>
+</div>
+<a id="a77b68d3e54db8e58b0c911be0b691a53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77b68d3e54db8e58b0c911be0b691a53">&#9670;&nbsp;</a></span>wstrcmp_alpha_rev()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wstrcmp_alpha_rev </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structwide__string.html">wide_string</a> const *&#160;</td>
+          <td class="paramname"><em>left_wide_string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structwide__string.html">wide_string</a> const *&#160;</td>
+          <td class="paramname"><em>right_wide_string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function compares two wide strings left to right ignoring non-alpha wide characters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">left_wide_string,right_wide_string</td><td>The wide strings this function will compare</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>&lt; 0 if left_wstr &lt; right_wstr, 0 if left_wstr == right_wstr, &gt; 0 if left_wstr &gt; right_wstr </dd></dl>
 
 </div>
 </div>
@@ -147,80 +186,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of occurances of <code>wc</code> in <code>wstr</code> </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd><code>wc</code> must not be <code>'\0'</code> </dd></dl>
-
-</div>
-</div>
-<a id="a6d97b19dea9473d857c06562603750cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d97b19dea9473d857c06562603750cc">&#9670;&nbsp;</a></span>wstrrep()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t wstrrep </td>
-          <td>(</td>
-          <td class="paramtype">wchar_t *&#160;</td>
-          <td class="paramname"><em>wstr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">wchar_t&#160;</td>
-          <td class="paramname"><em>fwc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">wchar_t&#160;</td>
-          <td class="paramname"><em>twc</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>This function replaces all occurances of one wide character in a wide string with another. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">wstr</td><td>The wide string this function will operate on </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">fwc</td><td>The wide character to replace </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">twc</td><td>The wide character to replace with</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of replacements made</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd><code>fwc</code> must not be <code>'\0'</code> </dd></dl>
-
-</div>
-</div>
-<a id="a5a506b783f1ce5b112e68f4d255facf7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a506b783f1ce5b112e68f4d255facf7">&#9670;&nbsp;</a></span>wstrrev()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void wstrrev </td>
-          <td>(</td>
-          <td class="paramtype">wchar_t *&#160;</td>
-          <td class="paramname"><em>wstr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>This function reverses a wide string in-place. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">wstr</td><td>The wide string that will be reversed </td></tr>
-  </table>
-  </dd>
-</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of occurances of <code>wc</code> in <code>wstr</code>, <code>0</code> if <code>wc</code> is <code>'\0'</code> </dd></dl>
 
 </div>
 </div>

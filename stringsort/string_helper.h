@@ -21,7 +21,7 @@ typedef struct {
 } wide_string;
 
 /**
- * \brief This function compares two wide strings left to right ignoring non-alnum wide characters
+ * \brief This function compares two wide strings left to right ignoring non-alpha wide characters
  *
  * \param[in] left_wide_string, right_wide_string The wide strings this function will compare
  *
@@ -30,7 +30,7 @@ typedef struct {
 int wstrcmp_alpha_fow(wide_string const* left_wide_string, wide_string const* right_wide_string);
 
 /**
- * \brief This function compares two wide strings left to right ignoring non-alnum wide characters
+ * \brief This function compares two wide strings left to right ignoring non-alpha wide characters
  *
  * \param[in] left_wide_string, right_wide_string The wide strings this function will compare
  *
