@@ -1,7 +1,15 @@
 #include "file.h"
-#include "program.h"
+#include "lines.h"
 
 #include <stdlib.h>
+
+void print_help(char const* program_name) {
+    printf("This program sorts an input file's lines and stores the result in an output file\n"
+           "To use this program, run %s [input file name] [output file name]\n"
+           "If you want to read from stdin, [input file name] should be \"stdin\"\n"
+           "If you want to write to stdout, [output file name] should be \"stdout\"\n",
+           program_name);
+}
 
 int main(int argc, char** argv) {
     if (argc < 3) {
@@ -24,14 +32,15 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 
-    int err = rhy_sort(input_file, output_file);
-    print_rhy_sort_error(err);
+    STRINGSORT_ERROR err = stringsort(input_file, output_file);
 
     close_file(input_file);
     close_file(output_file);
 
-    if (err != RHY_SORT_SUCCESS) {
+    if (err != SORT_OK) {
+        fprintf(stderr, "%s\n", get_stringsort_error(err));
         return EXIT_FAILURE;
     }
+
     return EXIT_SUCCESS;
 }

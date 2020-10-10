@@ -1,69 +1,31 @@
 /**
- * \file lines.h This file defines functions for working with arrays of strings
+ * \file lines.c This file contains functions for accessing the program's core functionality
  */
 #pragma once
+
 #include <stdio.h>
-#include <wchar.h>
 
-#define WRITE_LINES_SUCCESS 0 /**< Symbolic parameter indicating that all lines were write successfully */
-#define WRITE_LINES_ERROR -1  /**< Symbolic parameter indicating that an error occured while writing lines */
+typedef enum stringsort_error_enum {
+    SORT_OK,
+    SORT_READ_ERROR,
+    SORT_WRITE_ERROR,
+    SORT_EXEC_ERROR
+} STRINGSORT_ERROR;
 
 /**
- * This structure represents strings that have been stored in a buffer. Do not modify it directly
+ * \brief This function reads an input file's contents, sorts them and writes them to a output file
+ *
+ * \param[in] input_file, output_file The files this function will operate on
+ *
+ * \return an error code describing what kind of error, if any, occured
  */
-typedef struct _lines_s LINES;
-typedef int (*comparator)(void const*, void const*);
+STRINGSORT_ERROR stringsort(FILE* input_file, FILE* output_file);
 
 /**
- * \brief This function reads lines and stores them in a #LINES structure
+ * \brief This function returns a string corresponding to a given error code
  *
- * \param[in] input_file The file from which the lines will be read
- *
- * \return A #LINES structure describing the read lines if no error, NULL if an error occured
- *
- * \remark You can free the returned structure (if it is not NULL) by calling #free_lines.
- *         This function reads lines until it encouters EOF
- */
-LINES* read_lines(FILE* input_file);
-
-/**
- * \brief This function reverses the contents of a #LINES structure without changing their order
- *
- * \param[in] lines The #LINES structure whose contents this this function will operate on
- */
-void reverse_lines(LINES* lines);
-
-/**
- * \brief This functions writes the contents of a #LINES structure to a file
- *
- * \param[in] lines The #LINES structure whose contents that this function will write
- * \param[in] file The file to which the lines will be written 
+ * \param[in] err The error code
  * 
- * \return #WRITE_LINES_SUCCESS if no error occured, #WRITE_LINES_ERROR otherwise
+ * \return Human-readable representation of the given error code
  */
-int write_lines(const LINES* lines, FILE* file);
-
-/**
- * \brief This function sorts the contents of a #LINES structure
- *
- * \param[in, out] lines The #LINES structure whose contents will be sorted by this function
- * \param[in] comp The comparison function to use
- */
-void sort_lines(LINES* lines, comparator comp);
-
-/**
- * \brief This function frees the #LINES structure returned by #read_lines
- *
- * \param[out] lines The #LINES structure that this function will operate on
- */
-void free_lines(LINES* lines);
-
-/**
- * \brief This function can be used as a parameter to #sort_lines when sorting strings left to right
- */
-int qsort_cmp(void const* left_value_p, void const* right_value_p);
-
-/**
- * \brief This function can be used as a parameter to #sort_lines when sorting strings right to left
- */
-int qsort_cmp_reverse(void const* left_value_p, void const* right_value_p);
+char const* get_stringsort_error(STRINGSORT_ERROR err);

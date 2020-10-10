@@ -8,7 +8,10 @@
 
 size_t wstrcnt(wchar_t const* wstr, wchar_t wc) {
     assert(wstr);
-    assert(wc);
+
+    if (wc == L'\0') {
+        return 0;
+    }
 
     size_t cnt = 0;
     while ((wstr = wcschr(wstr, wc))) {
@@ -21,9 +24,7 @@ size_t wstrcnt(wchar_t const* wstr, wchar_t wc) {
 wchar_t const* find_alpha(wchar_t const* start, wchar_t const* end, ptrdiff_t step) {
     assert(start);
     assert(end);
-    assert(step != 0);
-
-    step /= labs(step);
+    assert(step == 1 || step == -1);
 
     while (start != end && !iswalpha(*start)) {
         start += step;
@@ -31,32 +32,12 @@ wchar_t const* find_alpha(wchar_t const* start, wchar_t const* end, ptrdiff_t st
     return start;
 }
 
-int wstrcmp_alpha(wide_string const* left_wide_string, wide_string const* right_wide_string, ptrdiff_t step) {
-    assert(left_wide_string);
-    assert(right_wide_string);
-    assert(left_wide_string->str);
-    assert(right_wide_string->str);
-
-    if (step == 0) {
-        return 0;
-    }
-    step /= labs(step);
-
-    wchar_t const* left_wstr_start = NULL;
-    wchar_t const* left_wstr_end = NULL;
-    wchar_t const* right_wstr_start = NULL;
-    wchar_t const* right_wstr_end = NULL;
-    if (step > 0) {
-        left_wstr_start = left_wide_string->str;
-        left_wstr_end = left_wide_string->str + left_wide_string->len;
-        right_wstr_start = right_wide_string->str;
-        right_wstr_end = right_wide_string->str + right_wide_string->len;
-    } else {
-        left_wstr_start = left_wide_string->str + left_wide_string->len - 1;
-        left_wstr_end = left_wide_string->str - 1;
-        right_wstr_start = right_wide_string->str + right_wide_string->len - 1;
-        right_wstr_end = right_wide_string->str - 1;
-    }
+int wstrcmp_common(wchar_t const* left_wstr_start, wchar_t const* left_wstr_end, wchar_t const* right_wstr_start, wchar_t const* right_wstr_end, ptrdiff_t step) {
+    assert(left_wstr_start);
+    assert(left_wstr_end);
+    assert(right_wstr_start);
+    assert(right_wstr_end);
+    assert(step == 1 || step == -1);
 
     while ((left_wstr_start = find_alpha(left_wstr_start, left_wstr_end, step)) &&
            (right_wstr_start = find_alpha(right_wstr_start, right_wstr_end, step)) &&
@@ -71,11 +52,33 @@ int wstrcmp_alpha(wide_string const* left_wide_string, wide_string const* right_
         right_wstr_start += step;
     }
 
-    if (left_wstr_start == left_wstr_end && right_wstr_start != right_wstr_end) {
-        return 1;
-    }
-    if (left_wstr_start != left_wstr_end && right_wstr_start == right_wstr_end) {
-        return -1;
-    }
-    return 0;
+    return (right_wstr_start == right_wstr_end) - (left_wstr_start == left_wstr_end);
+}
+
+int wstrcmp_alpha_fow(wide_string const* left_wide_string, wide_string const* right_wide_string) {
+    assert(left_wide_string);
+    assert(right_wide_string);
+    assert(left_wide_string->str);
+    assert(right_wide_string->str);
+
+    wchar_t const* left_wstr_start = left_wide_string->str;
+    wchar_t const* left_wstr_end = left_wide_string->str + left_wide_string->len;
+    wchar_t const* right_wstr_start = right_wide_string->str;
+    wchar_t const* right_wstr_end = right_wide_string->str + right_wide_string->len;
+
+    return wstrcmp_common(left_wstr_start, left_wstr_end, right_wstr_start, right_wstr_end, 1);
+}
+
+int wstrcmp_alpha_rev(wide_string const* left_wide_string, wide_string const* right_wide_string) {
+    assert(left_wide_string);
+    assert(right_wide_string);
+    assert(left_wide_string->str);
+    assert(right_wide_string->str);
+
+    wchar_t const* left_wstr_start = left_wide_string->str + left_wide_string->len - 1;
+    wchar_t const* left_wstr_end = left_wide_string->str - 1;
+    wchar_t const* right_wstr_start = right_wide_string->str + right_wide_string->len - 1;
+    wchar_t const* right_wstr_end = right_wide_string->str - 1;
+
+    return wstrcmp_common(left_wstr_start, left_wstr_end, right_wstr_start, right_wstr_end, -1);
 }

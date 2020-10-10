@@ -1,4 +1,15 @@
 #!/bin/bash
 
-gcc -std=c99 -g -Og -Wall -Wextra ../stringsort/lines.c ../stringsort/encyclopedia_sort.c ../stringsort/file.c ../stringsort/string_helper.c ../stringsort/program.c ../stringsort/util.c -o encyclopedia_sort
-gcc -std=c99 -g -Og -Wall -Wextra ../stringsort/lines.c ../stringsort/rhyme_sort.c ../stringsort/file.c ../stringsort/string_helper.c ../stringsort/program.c ../stringsort/util.c -o rhyme_sort
+CC_FLAGS_REL="-O3 -march=native -DNDEBUG"
+CC_FLAGS_DBG="-g3"
+CC_FLAGS="-std=c99 -Wall -Wextra"
+if [ -n "$REL" ]
+then
+    CC_FLAGS="$CC_FLAGS $CC_FLAGS_REL"
+else
+    CC_FLAGS="$CC_FLAGS $CC_FLAGS_DBG"
+fi
+
+SRC_FILES="../stringsort/lines.c ../stringsort/file.c ../stringsort/string_helper.c ../stringsort/stringsort.c ../stringsort/util.c"
+
+gcc $CC_FLAGS $SRC_FILES -o stringsort
