@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define DEFAULT_BUFFER_SIZE 8192
-#define SWAP_BUFFER_SIZE (64)
+enum {DEFAULT_BUFFER_SIZE = 8192};
+enum {SWAP_BUFFER_SIZE = 64};
 
 void memswap(void* a, void* b, size_t num) {
     assert(a);
@@ -15,16 +15,13 @@ void memswap(void* a, void* b, size_t num) {
     static char swap_buffer[SWAP_BUFFER_SIZE];
 
     while (num) {
-        size_t num_cp = SWAP_BUFFER_SIZE;
-        if (num <= SWAP_BUFFER_SIZE) {
-            num_cp = num;
-        }
+        size_t num_cp = (num <= SWAP_BUFFER_SIZE) ? num : SWAP_BUFFER_SIZE;
         memcpy(swap_buffer, a, num_cp);
         memcpy(a, b, num_cp);
         memcpy(b, swap_buffer, num_cp);
         num -= num_cp;
-        a += num;
-        b += num;
+        a += num_cp;
+        b += num_cp;
     }
 }
 

@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
-#define NUM_QUICK_SORT_ITER (1000)
+enum {NUM_QUICK_SORT_ITER = 1000};
 
 int int_comp(void const* lvp, void const* rvp) {
     assert(lvp);
@@ -87,6 +87,22 @@ START_TEST(test_memswap_2) {
 }
 END_TEST
 
+START_TEST(test_memswap_3) {
+    char a[100];
+    char a_orig[100];
+    char b[100];
+    char b_orig[100];
+    memset(a_orig, 'a', sizeof(a));
+    memset(b_orig, 'b', sizeof(b));
+    memcpy(a, a_orig, sizeof(a_orig));
+    memcpy(b, b_orig, sizeof(b_orig));
+
+    memswap(a, b, sizeof(a));
+    ck_assert_mem_eq(a, b_orig, sizeof(a));
+    ck_assert_mem_eq(b, a_orig, sizeof(b));
+}
+END_TEST
+
 START_TEST(test_read_buffer_non_empty_file_ptr) {
     char const* file_name = "test/non_empty_file";
     char const* file_contents = "This is a \n test file\n";
@@ -161,8 +177,8 @@ START_TEST(test_read_buffer_non_read_file_ptr) {
     int num = read_buffer(fp, &buf);
     ck_assert_msg(buf == NULL,
                   "Unexpected result while trying to read data from file %s not opened for reading: "
-                  "expected contents to be %s, got %.*s",
-                  file_name, NULL, num, buf);
+                  "expected contents to be NULL, got %.*s",
+                  file_name, num, buf);
     free(buf);
     fclose(fp);
 }
@@ -188,8 +204,8 @@ START_TEST(test_read_buffer_non_read_stream_ptr) {
     int num = read_buffer(stdout, &buf);
     ck_assert_msg(buf == NULL,
                   "Unexpected result while trying to read data from stdout: "
-                  "expected contents to be %s, got %.*s",
-                  NULL, num, buf);
+                  "expected contents to be NULL, got %.*s",
+                  num, buf);
     free(buf);
 }
 END_TEST
@@ -316,6 +332,7 @@ Suite* setup_memswap_suite() {
     TCase* memswap_all = tcase_create("usage of memswap");
     tcase_add_test(memswap_all, test_memswap_1);
     tcase_add_test(memswap_all, test_memswap_2);
+    tcase_add_test(memswap_all, test_memswap_3);
 
     suite_add_tcase(s, memswap_all);
 

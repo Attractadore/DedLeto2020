@@ -213,10 +213,7 @@ STRINGSORT_ERROR stringsort(FILE* input_file, FILE* output_file) {
     size_t num_chars = lines->_string_buffer_size;
     wchar_t const* write_p = lines->_string_buffer;
     while (num_chars) {
-        int num_write = INT_MAX;
-        if (num_chars < INT_MAX) {
-            num_write = num_chars;
-        }
+        int num_write = (num_chars < INT_MAX) ? num_chars : INT_MAX;
         if (fwprintf(output_file, L"%.*ls", num_write, write_p) < 0) {
             free_lines(lines);
             return SORT_WRITE_ERROR;

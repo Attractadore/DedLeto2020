@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CC_FLAGS="-std=c99 -Wall -Wextra -lcheck"
+CC_FLAGS="-std=c99 -Wall -Wextra -lcheck"
 
 gcc $CC_FLAGS ../stringsort/test_file.c ../stringsort/file.c -o test_file
 gcc $CC_FLAGS ../stringsort/test_string_helper.c ../stringsort/string_helper.c -o test_string_helper
